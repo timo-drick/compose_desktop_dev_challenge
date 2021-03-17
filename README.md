@@ -13,7 +13,7 @@ To be able to use the same UI toolkit for desktop and mobile is awesome.
 I just wanted to see what I have to change to be able to run the apps on desktop.
 
 ## :camera_flash: Screenshots
-<img src="/screenshots/video.mp4" width="480">
+<img src="/screenshots/video.webp" width="480">
 <img src="/screenshots/week1_overview_1.webp" width="260">&emsp;<img src="/screenshots/week1_detail_1.webp" width="260">
 <img src="/screenshots/week2_countposer_1.webp" width="260">
 <img src="/screenshots/week3_start_1.webp" width="260">&emsp;<img src="/screenshots/week3_home_1.webp" width="260">&emsp;<img src="/screenshots/week3_home_2.webp" width="260">
