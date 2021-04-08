@@ -2,7 +2,7 @@
 
 ## :scroll: Description
 I converted my submissions to the 
-[AndroidDevChallenge](https://developer.android.com/dev-challenge) in to 
+[AndroidDevChallenge](https://developer.android.com/dev-challenge) into 
 [Compose for Desktop](https://www.jetbrains.com/lp/compose/).
 * Week 1: https://github.com/timo-drick/compose_dev_challenge_1
 * Week 2: https://github.com/timo-drick/compose_dev_challenge_2
