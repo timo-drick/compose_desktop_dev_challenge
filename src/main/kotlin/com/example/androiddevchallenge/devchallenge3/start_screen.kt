@@ -15,7 +15,6 @@
  */
 package com.example.androiddevchallenge.devchallenge3
 
-import IStartScreen
 import Screen
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -38,13 +37,6 @@ import androidx.compose.ui.res.svgResource
 import androidx.compose.ui.res.vectorXmlResource
 import androidx.compose.ui.unit.dp
 import isSystemInDarkTheme
-
-class LiveStartScreen : IStartScreen {
-    @Composable
-    override fun start(onContinue: (Screen) -> Unit) {
-        StartScreen(onContinue)
-    }
-}
 
 enum class Action {
     CONTINUE, COUNT_POSER, PUPPY

@@ -50,20 +50,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import de.appsonair.compose.live_composable.ILiveComposable
 import isSystemInDarkTheme
 import setSystemInDarkTheme
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
-
-class LiveHomeScreen: ILiveComposable() {
-    @Composable
-    override fun start() {
-        HomeScreen()
-    }
-}
-
 
 enum class NavItems(val title: String, val vector: ImageVector) {
     HOME("HOME", Icons.Default.Spa),
@@ -124,7 +115,7 @@ fun HomeContent(contentPadding: PaddingValues) {
         LazyColumn(contentPadding = contentPadding) {
             item {
                 var searchText by remember { mutableStateOf("") }
-                Spacer(Modifier.height(16.dp))
+                Spacer(Modifier.height(56.dp))
                 TextField(
                     value = searchText,
                     modifier = Modifier
@@ -145,7 +136,7 @@ fun HomeContent(contentPadding: PaddingValues) {
                 )
             }
             item {
-                Title("Favorite collections")
+                Title("FAVORITE COLLECTIONS")
                 Spacer(Modifier.height(8.dp))
             }
             gridItems(
@@ -158,7 +149,7 @@ fun HomeContent(contentPadding: PaddingValues) {
             }
             item {
                 Spacer(Modifier.height(8.dp))
-                Title(title = "Align your body")
+                Title(title = "ALIGN YOUR BODY")
                 Spacer(Modifier.height(8.dp))
             }
             //LazyRow(contentPadding = screenPadding, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -176,7 +167,7 @@ fun HomeContent(contentPadding: PaddingValues) {
 
             item {
                 Spacer(Modifier.height(8.dp))
-                Title(title = "Align your mind")
+                Title(title = "ALIGN YOUR MIND")
                 Spacer(Modifier.height(8.dp))
             }
             val mindItems = MindImages.values().toList()
@@ -214,7 +205,7 @@ fun FavoriteItem(image: FavoriteImages) {
 @Composable
 fun Title(title: String) {
     Text(
-        title.toUpperCase(),
+        title,
         Modifier
             .paddingFromBaseline(top = 40.dp, bottom = 8.dp)
             .padding(screenPadding)

@@ -15,7 +15,6 @@
  */
 package com.example.androiddevchallenge.devchallenge3
 
-import ILoginScreen
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -45,14 +44,6 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import isSystemInDarkTheme
-
-class LiveLoginScreen : ILoginScreen {
-    @Composable
-    override fun start(onLogin: () -> Unit) {
-        LoginScreen(onLogin)
-    }
-}
-
 
 @Composable
 fun LoginScreen(onLogin: () -> Unit) {

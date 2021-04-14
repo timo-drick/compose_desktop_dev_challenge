@@ -19,9 +19,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import com.example.androiddevchallenge.devchallenge1.PuppyApp
 import com.example.androiddevchallenge.devchallenge2.CountPoserApp
-import com.example.androiddevchallenge.devchallenge3.*
-import de.appsonair.compose.live_composable.LiveComposable
-import java.io.File
+import com.example.androiddevchallenge.devchallenge3.HomeScreen
+import com.example.androiddevchallenge.devchallenge3.LoginScreen
+import com.example.androiddevchallenge.devchallenge3.MyTheme
+import com.example.androiddevchallenge.devchallenge3.StartScreen
 
 private var darkMode = mutableStateOf(true)
 
@@ -54,25 +55,33 @@ fun MyApp() {
 
     Crossfade(targetState = currentScreen) { screen ->
         when (screen) {
-            Screen.Start -> LiveComposable<LiveStartScreen, IStartScreen>(File("src/main/kotlin/com/example/androiddevchallenge/devchallenge3/start_screen.kt")) {
-                start(onContinue = {
-                    currentScreen = it
-                })
-            }
-            Screen.Login -> LiveComposable<LiveLoginScreen, ILoginScreen>(File("src/main/kotlin/com/example/androiddevchallenge/devchallenge3/login_screen.kt")) {
-                start(onLogin = { currentScreen = Screen.Home })
-            }
-            Screen.Home -> LiveComposable<LiveHomeScreen>(File("src/main/kotlin/com/example/androiddevchallenge/devchallenge3/home_screen.kt"))
+            Screen.Start -> StartScreen(onContinue = {
+                currentScreen = it
+            })
+            Screen.Login -> LoginScreen(onLogin = { currentScreen = Screen.Home })
+            Screen.Home -> HomeScreen()
             Screen.Puppy -> PuppyApp()
             Screen.CountPoser -> CountPoserApp()
         }
     }
 }
 
-interface IStartScreen {
-    @Composable fun start(onContinue: (Screen) -> Unit)
+class GreetingService {
+    fun getGreeting(callback: (Result<String>) -> Unit) {
+        callback(Result.success("Hi there"))
+    }
 }
-
-interface ILoginScreen {
-    @Composable fun start(onLogin: () -> Unit)
+@Composable
+fun Greeting(greetingService: GreetingService) {
+    var greeting: String by remember { mutableStateOf("") }
+    DisposableEffect(Unit) {
+        greetingService.getGreeting { result ->
+            result.fold(
+                onSuccess = { greeting = it },
+                onFailure = { greeting = "NOOO" }
+            )
+        }
+        onDispose {  }
+    }
+    Text(text = greeting)
 }
