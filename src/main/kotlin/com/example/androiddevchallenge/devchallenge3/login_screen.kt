@@ -37,7 +37,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.vectorXmlResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
@@ -48,7 +48,7 @@ import isSystemInDarkTheme
 @Composable
 fun LoginScreen(onLogin: () -> Unit) {
     val prefix = if (isSystemInDarkTheme()) "svgs/dark_" else "svgs/light_"
-    val background = vectorXmlResource("${prefix}login.xml")
+    val background = painterResource("${prefix}login.xml")
 
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }

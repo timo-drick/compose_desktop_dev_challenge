@@ -30,7 +30,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import com.example.androiddevchallenge.devchallenge3.gridItems
@@ -63,7 +63,7 @@ fun PuppyListItem(puppy: Puppy, onClick: (Puppy, Rect) -> Unit) {
             .aspectRatio(1.33f)
     ) {
         Image(
-            bitmap = imageResource(puppy.smallRes),
+            painter = painterResource(puppy.smallRes),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier

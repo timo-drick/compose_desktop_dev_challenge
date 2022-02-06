@@ -14,15 +14,12 @@
  * limitations under the License.
  */
 import androidx.compose.animation.Crossfade
-import androidx.compose.desktop.Window
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.window.singleWindowApplication
 import com.example.androiddevchallenge.devchallenge1.PuppyApp
 import com.example.androiddevchallenge.devchallenge2.CountPoserApp
-import com.example.androiddevchallenge.devchallenge3.HomeScreen
-import com.example.androiddevchallenge.devchallenge3.LoginScreen
-import com.example.androiddevchallenge.devchallenge3.MyTheme
-import com.example.androiddevchallenge.devchallenge3.StartScreen
+import com.example.androiddevchallenge.devchallenge3.*
 
 private var darkMode = mutableStateOf(true)
 
@@ -42,7 +39,7 @@ sealed class Screen {
     object CountPoser : Screen()
 }
 
-fun main() = Window {
+fun main() = singleWindowApplication {
     MyTheme(darkTheme = isSystemInDarkTheme()) {
         MyApp()
     }

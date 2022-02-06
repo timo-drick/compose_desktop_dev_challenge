@@ -2,7 +2,6 @@ package com.example.androiddevchallenge.devchallenge2
 
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.updateTransition
-import androidx.compose.desktop.Window
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
@@ -27,12 +26,13 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.singleWindowApplication
 import androidx.compose.ui.zIndex
-import com.example.androiddevchallenge.devchallenge3.MyTheme
+import com.example.androiddevchallenge.devchallenge1.MyTheme
 import isSystemInDarkTheme
 import kotlinx.coroutines.launch
 
-fun main() = Window {
+fun main() = singleWindowApplication {
     MyTheme(darkTheme = true) {
         CountPoserApp()
     }

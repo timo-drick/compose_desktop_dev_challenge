@@ -54,7 +54,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
@@ -178,7 +178,7 @@ fun PuppyDetailStatic(params: DetailScreen, onBack: () -> Unit) {
         else Modifier.fillMaxSize()
 
         Image(
-            bitmap = imageResource(params.puppy.smallRes),
+            painter = painterResource(params.puppy.smallRes),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = imageMod.padding(bottom = scrollPadding)

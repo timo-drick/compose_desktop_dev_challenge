@@ -3,7 +3,6 @@ package com.example.androiddevchallenge.devchallenge1
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.FiniteAnimationSpec
 import androidx.compose.animation.core.tween
-import androidx.compose.desktop.Window
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -20,6 +19,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.singleWindowApplication
 import isSystemInDarkTheme
 
 val purple200 = Color(0xFFBB86FC)
@@ -114,7 +114,7 @@ fun <T> SaveableCrossfade(
 }
 
 fun main() {
-    Window {
+    singleWindowApplication {
         PuppyApp()
     }
 }

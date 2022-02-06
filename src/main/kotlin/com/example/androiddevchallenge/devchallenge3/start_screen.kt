@@ -33,8 +33,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.svgResource
-import androidx.compose.ui.res.vectorXmlResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import isSystemInDarkTheme
 
@@ -45,8 +44,8 @@ enum class Action {
 @Composable
 fun StartScreen(onContinue: (Screen) -> Unit) {
     val prefix = if (isSystemInDarkTheme()) "svgs/dark_" else "svgs/light_"
-    val backgroundImage = vectorXmlResource("${prefix}login.xml")
-    val logo = svgResource("${prefix}logo.svg")
+    val backgroundImage = painterResource("${prefix}login.xml")
+    val logo = painterResource("${prefix}logo.svg")
 
     Box(
         modifier = Modifier
