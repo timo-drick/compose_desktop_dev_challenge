@@ -3,8 +3,9 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.6.10"
-    id("org.jetbrains.compose") version "1.0.1-rc2"
+    kotlin("jvm") version "2.1.0"
+    kotlin("plugin.compose") version "2.1.0"
+    id("org.jetbrains.compose") version "1.7.0"
 }
 
 group = "com.example.androiddevchallenge"
@@ -20,10 +21,6 @@ dependencies {
     implementation(compose.desktop.currentOs)
     implementation(compose.material)
     implementation(compose.materialIconsExtended)
-}
-
-tasks.withType<KotlinCompile>() {
-    kotlinOptions.jvmTarget = "11"
 }
 
 compose.desktop {

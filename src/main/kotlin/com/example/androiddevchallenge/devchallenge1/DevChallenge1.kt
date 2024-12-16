@@ -1,7 +1,8 @@
 package com.example.androiddevchallenge.devchallenge1
 
-import androidx.compose.animation.Crossfade
+import androidx.compose.animation.*
 import androidx.compose.animation.core.FiniteAnimationSpec
+import androidx.compose.animation.core.snap
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -119,11 +120,17 @@ fun main() {
     }
 }
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun PuppyApp() {
     var screen by remember { mutableStateOf<Screen>(OverviewScreen) }
     MyTheme(darkTheme = true) {
-        SaveableCrossfade(targetState = screen) { targetScreen ->
+        AnimatedContent(
+            targetState = screen,
+            transitionSpec = {
+                fadeIn(tween(100)) with fadeOut(snap(500))
+            }
+        ) { targetScreen ->
             when (targetScreen) {
                 is OverviewScreen -> Overview(
                     onSelect = { puppy, imagePosition ->
