@@ -15,11 +15,11 @@
  */
 package com.example.androiddevchallenge.devchallenge3
 
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.*
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.Res
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.nature_meditations
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.short_mantras
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.stress_and_anxiety
+import com.example.androiddevchallenge.app.generated.resources.*
+import com.example.androiddevchallenge.app.generated.resources.Res
+import com.example.androiddevchallenge.app.generated.resources.nature_meditations
+import com.example.androiddevchallenge.app.generated.resources.short_mantras
+import com.example.androiddevchallenge.app.generated.resources.stress_and_anxiety
 import org.jetbrains.compose.resources.DrawableResource
 
 interface Images {

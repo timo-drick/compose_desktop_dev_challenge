@@ -35,6 +35,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import com.example.androiddevchallenge.gridItems
 import de.drick.compose.hotpreview.HotPreview
 import org.jetbrains.compose.resources.painterResource
 import kotlin.math.max
@@ -240,37 +241,6 @@ fun PaddingValues.add(start: Dp = 0.dp, top: Dp = 0.dp, end: Dp = 0.dp, bottom: 
                 if (layoutDirection == LayoutDirection.Ltr) end else start
         override fun calculateBottomPadding() =
             this@add.calculateBottomPadding() + bottom
-    }
-}
-
-inline fun <T> LazyListScope.gridItems(
-    columns: Int,
-    gridPadding: Dp = 0.dp,
-    contentPadding: PaddingValues = PaddingValues(),
-    items: List<T>,
-    crossinline itemContent: @Composable LazyItemScope.(item: T) -> Unit
-) {
-    val chunkedItems = items.chunked(columns)
-    itemsIndexed(chunkedItems) { index, rowList ->
-        val layoutDirection = LocalLayoutDirection.current
-        val topPadding = if (index > 0) gridPadding else contentPadding.calculateTopPadding()
-        val startPadding = contentPadding.calculateLeftPadding(layoutDirection)
-        val endPadding = contentPadding.calculateEndPadding(layoutDirection)
-        val bottomPadding = contentPadding.calculateBottomPadding()
-        Row(Modifier.padding(top = topPadding, start = startPadding, bottom = bottomPadding, end = endPadding)) {
-            val rowModifier = Modifier.weight(1f)
-            rowList.forEachIndexed { index, item ->
-                if (index > 0) Spacer(Modifier.width(gridPadding))
-                Box(rowModifier) {
-                    itemContent(item)
-                }
-            }
-            val emptyRows = (columns - rowList.size)
-            repeat(emptyRows) { // fill empty cells
-                Spacer(Modifier.width(gridPadding))
-                Spacer(modifier = rowModifier)
-            }
-        }
     }
 }
 

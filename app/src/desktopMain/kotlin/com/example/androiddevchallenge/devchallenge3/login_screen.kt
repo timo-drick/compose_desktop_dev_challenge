@@ -43,9 +43,9 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.Res
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.dark_login
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.light_login
+import com.example.androiddevchallenge.app.generated.resources.Res
+import com.example.androiddevchallenge.app.generated.resources.dark_login
+import com.example.androiddevchallenge.app.generated.resources.light_login
 import de.drick.compose.hotpreview.HotPreview
 import org.jetbrains.compose.resources.painterResource
 

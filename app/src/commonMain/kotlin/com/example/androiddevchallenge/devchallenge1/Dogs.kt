@@ -15,11 +15,9 @@
  */
 package com.example.androiddevchallenge.devchallenge1
 
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.*
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.Res
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.berkay_gumustekin_ngqyo2ayyne_unsplash
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.rebecca_de_bautista_6eofcm4qea4_unsplash
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.tammy_gann__yr96i_pjhk_unsplash
+import com.example.androiddevchallenge.app.generated.resources.Res
+import com.example.androiddevchallenge.app.generated.resources.*
+
 import org.jetbrains.compose.resources.DrawableResource
 import kotlin.random.Random
 

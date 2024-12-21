@@ -64,6 +64,11 @@ import kotlin.math.max
 private fun PreviewRatingBar() {
     RatingBar(2)
 }
+@HotPreview
+@Composable
+private fun PreviewRatingBa5() {
+    RatingBar(5)
+}
 
 @Composable
 fun RatingBar(rating: Int) {

@@ -35,11 +35,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.*
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.Res
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.dark_login
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.dark_logo
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.light_login
+import com.example.androiddevchallenge.app.generated.resources.*
+import com.example.androiddevchallenge.app.generated.resources.Res
+import com.example.androiddevchallenge.app.generated.resources.dark_login
+import com.example.androiddevchallenge.app.generated.resources.dark_logo
+import com.example.androiddevchallenge.app.generated.resources.light_login
 import de.drick.compose.hotpreview.HotPreview
 import org.jetbrains.compose.resources.painterResource
 

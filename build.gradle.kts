@@ -1,38 +1,22 @@
-import org.jetbrains.compose.compose
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    kotlin("jvm") version "2.1.0"
-    kotlin("plugin.compose") version "2.1.0"
-    id("org.jetbrains.compose") version "1.7.0"
+    alias(libs.plugins.kotlin.multiplatform) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.compose.multiplatform) apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.kotlin.plugin.compose)
+    alias(libs.plugins.github.ben.manes.versions)
 }
 
-group = "com.example.androiddevchallenge"
-version = "1.0.0"
-
-repositories {
-    mavenCentral()
-    maven { url = uri("https://maven.pkg.jetbrains.space/public/p/compose/dev") }
-    google()
+fun isStable(version: String): Boolean {
+    val unStableKeyword = listOf("alpha", "beta", "rc", "cr", "m", "preview", "dev").any { version.contains(it, ignoreCase = true) }
+    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+    return unStableKeyword.not() || regex.matches(version)
 }
 
-dependencies {
-    implementation(compose.desktop.currentOs)
-    implementation(compose.material)
-    implementation(compose.materialIconsExtended)
-    implementation(compose.components.resources)
+fun isNonStable(version: String) = isStable(version).not()
 
-    implementation("de.drick.compose:hotpreview:0.1.0")
-}
-
-compose.desktop {
-    application {
-        mainClass = "MainKt"
-        nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "AndroidDevchallenge"
-            packageVersion = "1.0.0"
-        }
+tasks.named("dependencyUpdates", com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask::class.java).configure {
+    rejectVersionIf {
+        (isNonStable(candidate.version) && isStable(currentVersion))
     }
 }

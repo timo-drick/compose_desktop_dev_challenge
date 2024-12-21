@@ -1,0 +1,81 @@
+[versions]
+kotlin = "2.1.0"
+
+androidGradlePlugin = "8.7.3"
+androidLibraryPlugin = "8.7.3"
+benManesPlugin = "0.51.0"
+johnrengelmanShadowPlugin = "8.1.1"
+
+compileSdk = "35"
+minSdk = "26"
+targetSdk = "35"
+buildTools = "35.0.0"
+
+kotlinxCoroutines = "1.9.0"
+kotlinxSerialization = "1.7.3"
+kotlinxCollectionsImmutable = "0.3.8"
+
+androidxAnnotation = "1.9.1"
+androidxAppcompat = "1.7.0"
+
+composeMultiplatform = "1.7.1"
+
+activityComposeVersion = "1.9.3"
+
+logbackClassicVersion = "1.5.12"
+
+junitVersion = "4.13.2"
+dexmakerMockito = "1.2"
+mockitoCore = "5.14.2"
+robolectricVersion = "4.14"
+testRunner = "1.6.2"
+testUiautomotor = "2.3.0"
+
+hotpreview = "0.1.0"
+
+[libraries]
+
+drick-compose-hotpreview = { module = "de.drick.compose:hotpreview", version.ref = "hotpreview" }
+
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinxCoroutines" }
+kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinxSerialization" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinxCollectionsImmutable" }
+
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityComposeVersion" }
+androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "androidxAnnotation" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidxAppcompat" }
+
+compose-runtime = { module = "androidx.compose.runtime:runtime" }
+
+compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
+compose-material3 = { module = "androidx.compose.material3:material3" }
+compose-ui = { module = "androidx.compose.ui:ui" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logbackClassicVersion" }
+
+
+junit = { module = "junit:junit", version.ref = "junitVersion" }
+testRunner = { module = "androidx.test:runner", version.ref = "testRunner" }
+test-uiautomotor = { module = "androidx.test.uiautomator:uiautomator", version.ref = "testUiautomotor" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
+dexmaker-mockito = { module = "com.google.dexmaker:dexmaker-mockito", version.ref = "dexmakerMockito" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectricVersion" }
+
+[plugins]
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-plugin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
+
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidLibraryPlugin" }
+github-ben-manes-versions = { id = "com.github.ben-manes.versions", version.ref = "benManesPlugin" }
+
+github-johnrengelman-shadow = { id = "com.github.johnrengelman.shadow", version.ref = "johnrengelmanShadowPlugin" }

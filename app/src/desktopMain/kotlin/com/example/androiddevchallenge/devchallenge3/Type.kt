@@ -21,11 +21,11 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.*
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.Res
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.kulim_park_light
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.kulim_park_regular
-import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.lato_bold
+import com.example.androiddevchallenge.app.generated.resources.*
+import com.example.androiddevchallenge.app.generated.resources.Res
+import com.example.androiddevchallenge.app.generated.resources.kulim_park_light
+import com.example.androiddevchallenge.app.generated.resources.kulim_park_regular
+import com.example.androiddevchallenge.app.generated.resources.lato_bold
 import org.jetbrains.compose.resources.Font
 
  @Composable

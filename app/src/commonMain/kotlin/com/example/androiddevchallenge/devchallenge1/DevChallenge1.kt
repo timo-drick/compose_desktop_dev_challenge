@@ -118,12 +118,6 @@ fun <T> SaveableCrossfade(
     }
 }
 
-fun main() {
-    singleWindowApplication {
-        PuppyApp()
-    }
-}
-
 @HotPreview(widthDp = 600, heightDp = 500)
 @HotPreview(name = "small font", widthDp = 600, heightDp = 500, fontScale = 0.5f)
 @Composable
