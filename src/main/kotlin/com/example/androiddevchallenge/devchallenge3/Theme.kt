@@ -82,7 +82,7 @@ fun MyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () 
     }
     MaterialTheme(
         colors = colors,
-        typography = typography,
+        typography = typography(),
         shapes = shapes,
         content = content
     )

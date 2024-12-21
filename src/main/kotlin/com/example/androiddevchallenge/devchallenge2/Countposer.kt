@@ -44,7 +44,8 @@ enum class TimerState {
 }
 
 
-@HotPreview(widthDp = 300, heightDp = 300)
+@HotPreview(name = "dark mode", widthDp = 400, heightDp = 400)
+@HotPreview(widthDp = 400, heightDp = 400, darkMode = false)
 @Composable
 fun LoginPreview() {
     PuppyTheme(darkTheme = isSystemInDarkTheme()) {
@@ -54,16 +55,17 @@ fun LoginPreview() {
 
 class Test()
 
-@HotPreview(name = "dark mode", widthDp = 400, heightDp = 200)
-@HotPreview(widthDp = 400, heightDp = 200, darkMode = false)
+@HotPreview(name = "dark mode", widthDp = 400, heightDp = 400)
+@HotPreview(widthDp = 400, heightDp = 400, darkMode = false)
 @Composable
 fun DialogPreview() {
-    val image = Test::class.java.classLoader.getResource("images/short_mantras.jpg")
+    val image = Test::class.java.classLoader.getResource("composeResources/drawable/short_mantras.jpg")
     PuppyTheme {
         SetTimerDialog(
             currentSeconds = 10,
             newSecondsSet = {}
         )
+        CountPoserApp()
     }
 }
 

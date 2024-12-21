@@ -15,36 +15,43 @@
  */
 package com.example.androiddevchallenge.devchallenge3
 
+import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.*
+import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.Res
+import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.nature_meditations
+import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.short_mantras
+import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.stress_and_anxiety
+import org.jetbrains.compose.resources.DrawableResource
+
 interface Images {
     val title: String
-    val resId: String
+    val resId: DrawableResource
 }
 
-enum class FavoriteImages(override val title: String, override val resId: String) : Images {
-    A("Short mantras", "short_mantras"),
-    B("Nature meditations", "nature_meditations"),
+enum class FavoriteImages(override val title: String, override val resId: DrawableResource) : Images {
+    A("Short mantras", Res.drawable.short_mantras),
+    B("Nature meditations", Res.drawable.nature_meditations),
 
-    C("Stress and anxiety", "stress_and_anxiety"),
-    D("Self-massage", "self_massage"),
+    C("Stress and anxiety", Res.drawable.stress_and_anxiety),
+    D("Self-massage", Res.drawable.self_massage),
 
-    E("Overwhelmed", "overwhelmed"),
-    F("Nightly wind down", "nightly_wind_down")
+    E("Overwhelmed", Res.drawable.overwhelmed),
+    F("Nightly wind down", Res.drawable.nightly_wind_down)
 }
 
-enum class BodyImages(override val title: String, override val resId: String) : Images {
-    A("Inversion", "inversions"),
-    B("Quick yoga", "quick_yoda"),
-    C("Stretching", "stretching"),
-    D("Tabata", "tabata"),
-    E("HIIT", "hiit"),
-    F("Pre-natal yoga", "pre_natal_yoga")
+enum class BodyImages(override val title: String, override val resId: DrawableResource) : Images {
+    A("Inversion", Res.drawable.inversions),
+    B("Quick yoga", Res.drawable.quick_yoda),
+    C("Stretching", Res.drawable.stretching),
+    D("Tabata", Res.drawable.tabata),
+    E("HIIT", Res.drawable.hiit),
+    F("Pre-natal yoga", Res.drawable.pre_natal_yoga)
 }
 
-enum class MindImages(override val title: String, override val resId: String) : Images {
-    A("Meditate", "meditate"),
-    B("With kids", "with_kids"),
-    C("Aromatherapy", "aromatherapy"),
-    D("On the go", "on_the_go"),
-    E("With pets", "with_pets"),
-    F("High stress", "high_stress")
+enum class MindImages(override val title: String, override val resId: DrawableResource) : Images {
+    A("Meditate", Res.drawable.meditate),
+    B("With kids", Res.drawable.with_kids),
+    C("Aromatherapy", Res.drawable.aromatherapy),
+    D("On the go", Res.drawable.on_the_go),
+    E("With pets", Res.drawable.with_pets),
+    F("High stress", Res.drawable.high_stress)
 }

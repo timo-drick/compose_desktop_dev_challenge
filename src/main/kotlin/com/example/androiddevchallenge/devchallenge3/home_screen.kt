@@ -31,12 +31,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import de.drick.compose.hotpreview.HotPreview
+import org.jetbrains.compose.resources.painterResource
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
@@ -187,7 +187,7 @@ fun FavoriteItem(image: FavoriteImages) {
         shape = MaterialTheme.shapes.small
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Image(painterResource("images/${image.resId}.jpg"), image.title)
+            Image(painterResource(image.resId), image.title)
             Text(
                 text = image.title,
                 modifier = Modifier.padding(horizontal = 16.dp),
@@ -214,7 +214,7 @@ fun Title(title: String) {
 fun RoundItem(image: Images) {
     Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         Image(
-            painter = painterResource("images/${image.resId}.jpg"),
+            painter = painterResource(image.resId),
             contentDescription = image.title,
             Modifier
                 .size(88.dp)
