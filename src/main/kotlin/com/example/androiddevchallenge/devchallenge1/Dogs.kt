@@ -15,6 +15,12 @@
  */
 package com.example.androiddevchallenge.devchallenge1
 
+import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.*
+import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.Res
+import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.berkay_gumustekin_ngqyo2ayyne_unsplash
+import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.rebecca_de_bautista_6eofcm4qea4_unsplash
+import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.tammy_gann__yr96i_pjhk_unsplash
+import org.jetbrains.compose.resources.DrawableResource
 import kotlin.random.Random
 
 val dogNames = listOf(
@@ -28,11 +34,11 @@ enum class Puppy(
     val photographName: String,
     val link: String,
     val race: DogRace,
-    val smallRes: String
+    val smallRes: DrawableResource
 ) {
-    Rebecca(dogNames[0], "Rebecca De Bautista", "https://unsplash.com/@ilcocoloco", DogRace.AIREDALE_TERRIER, "dc1/rebecca_de_bautista_6eofcm4qea4_unsplash.jpg"),
-    Tammy(dogNames[1], "Tammy Gann", "https://unsplash.com/@tammynaz", DogRace.AIREDALE_TERRIER, "dc1/tammy_gann__yr96i_pjhk_unsplash.jpg"),
-    Berkay(dogNames[2], "Berkay Gumustekin", "https://unsplash.com/@berkaygumustekin", DogRace.GOLDEN_RETRIEVER, "dc1/berkay_gumustekin_ngqyo2ayyne_unsplash.jpg"),
-    Patrick(dogNames[3], "Patrick Kool", "https://unsplash.com/@patrick62", DogRace.CAVALIER_KING, "dc1/patrick_kool_06efqvjkib8_unsplash.jpg"),
-    Joyce(dogNames[4], "Joyce Zuijdwegt", "https://unsplash.com/@angryyoungpoor", DogRace.CHIHUAHUA, "dc1/joyce_zuijdwegt_gqydwlkye0s_unsplash.jpg")
+    Rebecca(dogNames[0], "Rebecca De Bautista", "https://unsplash.com/@ilcocoloco", DogRace.AIREDALE_TERRIER, Res.drawable.rebecca_de_bautista_6eofcm4qea4_unsplash),
+    Tammy(dogNames[1], "Tammy Gann", "https://unsplash.com/@tammynaz", DogRace.AIREDALE_TERRIER, Res.drawable.tammy_gann__yr96i_pjhk_unsplash),
+    Berkay(dogNames[2], "Berkay Gumustekin", "https://unsplash.com/@berkaygumustekin", DogRace.GOLDEN_RETRIEVER, Res.drawable.berkay_gumustekin_ngqyo2ayyne_unsplash),
+    Patrick(dogNames[3], "Patrick Kool", "https://unsplash.com/@patrick62", DogRace.CAVALIER_KING, Res.drawable.patrick_kool_06efqvjkib8_unsplash),
+    Joyce(dogNames[4], "Joyce Zuijdwegt", "https://unsplash.com/@angryyoungpoor", DogRace.CHIHUAHUA, Res.drawable.joyce_zuijdwegt_gqydwlkye0s_unsplash)
 }

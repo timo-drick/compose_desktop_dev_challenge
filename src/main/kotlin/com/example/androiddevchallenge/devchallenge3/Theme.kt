@@ -15,6 +15,7 @@
  */
 package com.example.androiddevchallenge.devchallenge3
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
@@ -73,7 +74,7 @@ val screenPadding = PaddingValues(start = 16.dp, end = 16.dp)
 val bottomNavigationElevation = 8.dp
 
 @Composable
-fun MyTheme(darkTheme: Boolean, content: @Composable () -> Unit) {
+fun MyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
     val colors = if (darkTheme) {
         DarkColorPalette
     } else {

@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.window.singleWindowApplication
@@ -21,22 +22,13 @@ import com.example.androiddevchallenge.devchallenge1.PuppyApp
 import com.example.androiddevchallenge.devchallenge2.CountPoserApp
 import com.example.androiddevchallenge.devchallenge3.*
 
-private var darkMode = mutableStateOf(true)
-
-@Composable
-@ReadOnlyComposable
-fun isSystemInDarkTheme(): Boolean = darkMode.value
-
-fun setSystemInDarkTheme(darkTheme: Boolean) {
-    darkMode.value = darkTheme
-}
 
 sealed class Screen {
-    object Start : Screen()
-    object Login : Screen()
-    object Home : Screen()
-    object Puppy : Screen()
-    object CountPoser : Screen()
+    data object Start : Screen()
+    data object Login : Screen()
+    data object Home : Screen()
+    data object Puppy : Screen()
+    data object CountPoser : Screen()
 }
 
 fun main() = singleWindowApplication {

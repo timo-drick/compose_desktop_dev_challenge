@@ -16,6 +16,7 @@
 package com.example.androiddevchallenge.devchallenge3
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -37,18 +38,30 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
-import isSystemInDarkTheme
+import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.Res
+import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.dark_login
+import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.light_login
+import de.drick.compose.hotpreview.HotPreview
+import org.jetbrains.compose.resources.painterResource
+
+
+@HotPreview(widthDp = 400, heightDp = 600)
+@HotPreview(widthDp = 400, heightDp = 600, darkMode = false)
+@Composable
+fun LoginPreview() {
+    MyTheme {
+        LoginScreen(onLogin = {})
+    }
+}
 
 @Composable
 fun LoginScreen(onLogin: () -> Unit) {
-    val prefix = if (isSystemInDarkTheme()) "svgs/dark_" else "svgs/light_"
-    val background = painterResource("${prefix}login.xml")
+    val res = if (isSystemInDarkTheme()) Res.drawable.dark_login else Res.drawable.light_login
 
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -58,7 +71,7 @@ fun LoginScreen(onLogin: () -> Unit) {
         color = MaterialTheme.colors.background
     ) {
         Image(
-            background,
+            painterResource(res),
             "background",
             Modifier.fillMaxSize(),
             contentScale = ContentScale.FillBounds

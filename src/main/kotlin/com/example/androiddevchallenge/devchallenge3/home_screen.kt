@@ -36,8 +36,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import isSystemInDarkTheme
-import setSystemInDarkTheme
+import de.drick.compose.hotpreview.HotPreview
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
@@ -47,14 +46,24 @@ enum class NavItems(val title: String, val vector: ImageVector) {
     PROFILE("PROFILE", Icons.Default.AccountCircle)
 }
 
+@HotPreview(name = "phone dark", widthDp = 400, heightDp = 800, fontScale = 1f, darkMode = true)
+@HotPreview(name = "phone", widthDp = 400, heightDp = 800, fontScale = 1.5f, darkMode = false)
+@HotPreview(name = "dark", widthDp = 1000, heightDp = 800, fontScale = 1f)
+@HotPreview(widthDp = 1000, heightDp = 800, fontScale = 1.5f, darkMode = false)
+@Composable
+fun PreviewHomeScreen() {
+    MyTheme {
+        HomeScreen()
+    }
+}
+
 @Composable
 fun HomeScreen() {
     var selectedTab by remember { mutableStateOf(NavItems.HOME) }
-    val darkTheme = isSystemInDarkTheme()
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { setSystemInDarkTheme(darkTheme.not()) },
+                onClick = {  },
                 backgroundColor = MaterialTheme.colors.onBackground
             ) {
                 Icon(

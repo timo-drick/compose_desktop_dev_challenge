@@ -21,6 +21,9 @@ dependencies {
     implementation(compose.desktop.currentOs)
     implementation(compose.material)
     implementation(compose.materialIconsExtended)
+    implementation(compose.components.resources)
+
+    implementation("de.drick.compose:hotpreview:0.1.0")
 }
 
 compose.desktop {

@@ -18,6 +18,7 @@ package com.example.androiddevchallenge.devchallenge3
 import Screen
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -33,19 +34,32 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import isSystemInDarkTheme
+import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.*
+import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.Res
+import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.dark_login
+import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.dark_logo
+import com.example.androiddevchallenge.compose_desktop_challenge_3.generated.resources.light_login
+import de.drick.compose.hotpreview.HotPreview
+import org.jetbrains.compose.resources.painterResource
 
 enum class Action {
     CONTINUE, COUNT_POSER, PUPPY
 }
 
+@HotPreview(name = "dark", widthDp = 800, heightDp = 900)
+@HotPreview(widthDp = 800, heightDp = 900, darkMode = false)
+@Composable
+fun PreviewStartScreen() {
+    MyTheme {
+        StartScreen(onContinue = {})
+    }
+}
+
 @Composable
 fun StartScreen(onContinue: (Screen) -> Unit) {
-    val prefix = if (isSystemInDarkTheme()) "svgs/dark_" else "svgs/light_"
-    val backgroundImage = painterResource("${prefix}login.xml")
-    val logo = painterResource("${prefix}logo.svg")
+    val resLogin = if (isSystemInDarkTheme()) Res.drawable.dark_login else Res.drawable.light_login
+    val resLogo = if (isSystemInDarkTheme()) Res.drawable.dark_logo else Res.drawable.light_logo
 
     Box(
         modifier = Modifier
@@ -54,13 +68,13 @@ fun StartScreen(onContinue: (Screen) -> Unit) {
         contentAlignment = Alignment.Center
     ) {
         Image(
-            backgroundImage,
+            painterResource(resLogin),
             "background",
             Modifier.fillMaxSize(),
             contentScale = ContentScale.FillBounds
         )
         Column(Modifier.padding(horizontal = 16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-            Image(logo, "mysoothe")
+            Image(painterResource(resLogo), "mysoothe")
             Spacer(Modifier.height(32.dp))
             Button(
                 onClick = { onContinue(Screen.Puppy) },

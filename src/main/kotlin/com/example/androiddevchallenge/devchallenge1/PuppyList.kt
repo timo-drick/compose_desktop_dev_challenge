@@ -30,10 +30,10 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import com.example.androiddevchallenge.devchallenge3.gridItems
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun Overview(onSelect: (Puppy, Rect) -> Unit) {

@@ -4,6 +4,7 @@ import androidx.compose.animation.*
 import androidx.compose.animation.core.FiniteAnimationSpec
 import androidx.compose.animation.core.snap
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -21,7 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.singleWindowApplication
-import isSystemInDarkTheme
+import de.drick.compose.hotpreview.HotPreview
 
 val purple200 = Color(0xFFBB86FC)
 val purple500 = Color(0xFF6200EE)
@@ -76,7 +77,10 @@ val shapes = Shapes(
 )
 
 @Composable
-fun MyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
+fun PuppyTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
     val colors = if (darkTheme) {
         DarkColorPalette
     } else {
@@ -120,11 +124,20 @@ fun main() {
     }
 }
 
+@HotPreview(widthDp = 600, heightDp = 500)
+@HotPreview(name = "small font", widthDp = 600, heightDp = 500, fontScale = 0.5f)
+@Composable
+fun PreviewPuppApp() {
+    PuppyTheme {
+        PuppyApp()
+    }
+}
+
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun PuppyApp() {
     var screen by remember { mutableStateOf<Screen>(OverviewScreen) }
-    MyTheme(darkTheme = true) {
+    PuppyTheme(darkTheme = true) {
         AnimatedContent(
             targetState = screen,
             transitionSpec = {

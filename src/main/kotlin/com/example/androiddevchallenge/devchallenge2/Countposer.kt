@@ -28,12 +28,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.singleWindowApplication
 import androidx.compose.ui.zIndex
-import com.example.androiddevchallenge.devchallenge1.MyTheme
-import isSystemInDarkTheme
+import com.example.androiddevchallenge.devchallenge1.PuppyTheme
+import de.drick.compose.hotpreview.HotPreview
 import kotlinx.coroutines.launch
 
 fun main() = singleWindowApplication {
-    MyTheme(darkTheme = true) {
+    PuppyTheme(darkTheme = true) {
         CountPoserApp()
     }
 }
@@ -41,6 +41,30 @@ fun main() = singleWindowApplication {
 
 enum class TimerState {
     New, Old, Finish
+}
+
+
+@HotPreview(widthDp = 300, heightDp = 300)
+@Composable
+fun LoginPreview() {
+    PuppyTheme(darkTheme = isSystemInDarkTheme()) {
+        CountPoserApp()
+    }
+}
+
+class Test()
+
+@HotPreview(name = "dark mode", widthDp = 400, heightDp = 200)
+@HotPreview(widthDp = 400, heightDp = 200, darkMode = false)
+@Composable
+fun DialogPreview() {
+    val image = Test::class.java.classLoader.getResource("images/short_mantras.jpg")
+    PuppyTheme {
+        SetTimerDialog(
+            currentSeconds = 10,
+            newSecondsSet = {}
+        )
+    }
 }
 
 

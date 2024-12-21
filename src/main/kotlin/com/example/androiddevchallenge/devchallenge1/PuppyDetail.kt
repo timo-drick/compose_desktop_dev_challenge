@@ -16,16 +16,13 @@
 package com.example.androiddevchallenge.devchallenge1
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.VectorConverter
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandHorizontally
 import androidx.compose.animation.shrinkHorizontally
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.gestures.animateScrollBy
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
@@ -46,6 +43,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -54,12 +52,18 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.DpOffset
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.*
+import de.drick.compose.hotpreview.HotPreview
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.painterResource
 import kotlin.math.max
+
+@HotPreview
+@Composable
+private fun PreviewRatingBar() {
+    RatingBar(2)
+}
 
 @Composable
 fun RatingBar(rating: Int) {
@@ -104,7 +108,18 @@ fun DetailTitle(title: String, modifier: Modifier, onBack: () -> Unit) {
     }
 }
 
-@OptIn(ExperimentalAnimationApi::class)
+@HotPreview(widthDp = 400, heightDp = 400)
+@Composable
+private fun PreviewPuppyDetail() {
+    val params = DetailScreen(Puppy.Tammy, Rect.Zero)
+    PuppyTheme {
+        PuppyDetailStatic(
+            params = params,
+            onBack = {}
+        )
+    }
+}
+
 @Composable
 fun PuppyDetailStatic(params: DetailScreen, onBack: () -> Unit) {
     val scope = rememberCoroutineScope()
