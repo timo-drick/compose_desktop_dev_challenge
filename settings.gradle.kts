@@ -13,15 +13,18 @@ dependencyResolutionManagement {
             from(files("libs.versions.toml"))
         }
     }
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    //repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
-        //mavenLocal()
+        mavenLocal()
     }
 }
 
 rootProject.name = "compose_desktop_challenge_3"
 
-include(":app")
+include(":shared")
+include(":desktopApp")
+include(":wasmApp")
+include(":androidApp")

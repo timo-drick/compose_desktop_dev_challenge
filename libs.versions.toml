@@ -9,7 +9,6 @@ johnrengelmanShadowPlugin = "8.1.1"
 compileSdk = "35"
 minSdk = "26"
 targetSdk = "35"
-buildTools = "35.0.0"
 
 kotlinxCoroutines = "1.9.0"
 kotlinxSerialization = "1.7.3"
@@ -18,7 +17,7 @@ kotlinxCollectionsImmutable = "0.3.8"
 androidxAnnotation = "1.9.1"
 androidxAppcompat = "1.7.0"
 
-composeMultiplatform = "1.7.1"
+composeMultiplatform = "1.7.3"
 
 activityComposeVersion = "1.9.3"
 
@@ -31,7 +30,7 @@ robolectricVersion = "4.14"
 testRunner = "1.6.2"
 testUiautomotor = "2.3.0"
 
-hotpreview = "0.1.0"
+hotpreview = "0.1.1"
 
 [libraries]
 
