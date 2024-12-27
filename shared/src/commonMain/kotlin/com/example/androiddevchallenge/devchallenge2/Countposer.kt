@@ -37,7 +37,7 @@ enum class TimerState {
 }
 
 
-@HotPreview(name = "dark mode", widthDp = 400, heightDp = 400)
+@HotPreview(name = "dark mode", widthDp = 400, heightDp = 400, density = 1.0f)
 @HotPreview(widthDp = 400, heightDp = 400, darkMode = false)
 @Composable
 fun LoginPreview() {
@@ -45,8 +45,6 @@ fun LoginPreview() {
         CountPoserApp()
     }
 }
-
-class Test()
 
 @HotPreview(name = "dark mode", widthDp = 400, heightDp = 400)
 @HotPreview(widthDp = 400, heightDp = 400, darkMode = false)
