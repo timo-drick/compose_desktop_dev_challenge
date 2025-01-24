@@ -27,6 +27,7 @@ kotlin {
             dependencies {
                 implementation(project(":shared"))
                 implementation(compose.ui)
+                implementation(libs.drick.compose.hotpreview)
             }
         }
     }

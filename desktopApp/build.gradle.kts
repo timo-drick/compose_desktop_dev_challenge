@@ -13,6 +13,7 @@ kotlin {
             dependencies {
                 implementation(compose.desktop.currentOs)
                 implementation(project(":shared"))
+                implementation(libs.drick.compose.hotpreview)
             }
         }
     }

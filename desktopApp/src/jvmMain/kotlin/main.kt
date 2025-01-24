@@ -14,12 +14,44 @@
  * limitations under the License.
  */
 
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.window.singleWindowApplication
 import com.example.androiddevchallenge.MyApp
 import com.example.androiddevchallenge.devchallenge3.*
+import de.drick.compose.hotpreview.HotPreview
 
-fun main() = singleWindowApplication {
+
+@HotPreview
+@HotPreview(darkMode = false)
+annotation class TestPreviews //Not working yet
+
+
+@HotPreview
+@HotPreview(darkMode = false)
+@Composable
+fun TestPreview() {
     MyTheme {
         MyApp()
+    }
+}
+
+// This is not working yet!!!
+@TestPreviews
+@Composable
+fun ClickableHtmlText(
+    text: String,
+    textColor: Color?,
+    keyHtmlMap: Map<String, String>,
+    htmlResult: (String) -> Unit,
+) {
+    println("Hello World")
+}
+
+fun main() {
+    singleWindowApplication {
+        MyTheme {
+            MyApp()
+        }
     }
 }
