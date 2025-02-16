@@ -1,8 +1,8 @@
 [versions]
 kotlin = "2.1.0"
 
-androidGradlePlugin = "8.7.3"
-androidLibraryPlugin = "8.7.3"
+androidGradlePlugin = "8.8.1"
+androidLibraryPlugin = "8.8.1"
 benManesPlugin = "0.51.0"
 johnrengelmanShadowPlugin = "8.1.1"
 
@@ -17,9 +17,9 @@ kotlinxCollectionsImmutable = "0.3.8"
 androidxAnnotation = "1.9.1"
 androidxAppcompat = "1.7.0"
 
-composeMultiplatform = "1.7.3"
+compose = "1.7.3"
 
-activityComposeVersion = "1.9.3"
+activityComposeVersion = "1.10.0"
 
 logbackClassicVersion = "1.5.12"
 
@@ -47,13 +47,13 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "androidxAnnotation" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidxAppcompat" }
 
-compose-runtime = { module = "androidx.compose.runtime:runtime" }
+compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose" }
 
-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
-compose-material3 = { module = "androidx.compose.material3:material3" }
-compose-ui = { module = "androidx.compose.ui:ui" }
-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
+compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose" }
+compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logbackClassicVersion" }
 
@@ -71,7 +71,7 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-plugin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
 
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidLibraryPlugin" }

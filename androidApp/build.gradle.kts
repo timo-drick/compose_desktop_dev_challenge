@@ -1,21 +1,8 @@
 plugins {
-    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.plugin.compose)
     alias(libs.plugins.compose.multiplatform)
-    alias(libs.plugins.android.application)
-}
-
-kotlin {
-    androidTarget()
-    sourceSets {
-        val androidMain by getting {
-            dependencies {
-                implementation(project(":shared"))
-                implementation(libs.androidx.activity.compose)
-                implementation(compose.material)
-            }
-        }
-    }
 }
 
 android {
@@ -32,8 +19,19 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+    buildFeatures {
+        compose = true
+    }
     kotlin {
         jvmToolchain(17)
     }
 }
 
+dependencies {
+    implementation(project(":shared"))
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.compose.ui)
+    implementation(libs.drick.compose.hotpreview)
+    implementation(libs.compose.ui.tooling.preview)
+    debugImplementation(libs.compose.ui.tooling)
+}
