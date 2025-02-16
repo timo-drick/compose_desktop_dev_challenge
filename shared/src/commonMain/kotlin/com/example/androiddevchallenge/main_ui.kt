@@ -8,14 +8,11 @@ import com.example.androiddevchallenge.devchallenge2.CountPoserApp
 import com.example.androiddevchallenge.devchallenge3.HomeScreen
 import com.example.androiddevchallenge.devchallenge3.LoginScreen
 import com.example.androiddevchallenge.devchallenge3.StartScreen
+import com.example.androiddevchallenge.devchallenge4.ForecastView
 
 
-sealed class Screen {
-    data object Start : Screen()
-    data object Login : Screen()
-    data object Home : Screen()
-    data object Puppy : Screen()
-    data object CountPoser : Screen()
+enum class Screen {
+    Start, Login, Home, Puppy, CountPoser, Forecast
 }
 
 @Composable
@@ -32,6 +29,7 @@ fun MyApp() {
             Screen.Home -> HomeScreen()
             Screen.Puppy -> PuppyApp()
             Screen.CountPoser -> CountPoserApp()
+            Screen.Forecast -> ForecastView()
         }
     }
 }

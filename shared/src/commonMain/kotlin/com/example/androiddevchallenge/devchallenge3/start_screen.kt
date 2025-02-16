@@ -18,6 +18,7 @@ package com.example.androiddevchallenge.devchallenge3
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -34,6 +35,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import com.example.androiddevchallenge.MyTheme
 import com.example.androiddevchallenge.Screen
 import com.example.androiddevchallenge.shared.generated.resources.*
 import com.example.androiddevchallenge.shared.generated.resources.Res
@@ -73,39 +75,26 @@ fun StartScreen(onContinue: (Screen) -> Unit) {
             Modifier.fillMaxSize(),
             contentScale = ContentScale.FillBounds
         )
-        Column(Modifier.padding(horizontal = 16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            modifier = Modifier.padding(horizontal = 16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
             Image(painterResource(resLogo), "mysoothe")
             Spacer(Modifier.height(32.dp))
-            Button(
-                onClick = { onContinue(Screen.Puppy) },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(72.dp),
-                shape = MaterialTheme.shapes.medium,
-                colors = ButtonDefaults.buttonColors(MaterialTheme.colors.secondary)
-            ) {
-                Text(text = "PUPPY")
-            }
-            Spacer(Modifier.height(8.dp))
-            Button(
-                onClick = { onContinue(Screen.CountPoser) },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(72.dp),
-                shape = MaterialTheme.shapes.medium,
-                colors = ButtonDefaults.buttonColors(MaterialTheme.colors.secondary)
-            ) {
-                Text(text = "COUNT POSER")
-            }
-            Spacer(Modifier.height(8.dp))
-            Button(
-                onClick = { onContinue(Screen.Login) },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(72.dp),
-                shape = MaterialTheme.shapes.medium
-            ) {
-                Text(text = "CONTINUE")
+            Screen.entries
+                .filterNot { it == Screen.Start }
+                .forEach { screen ->
+                Button(
+                    onClick = { onContinue(screen) },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(72.dp),
+                    shape = MaterialTheme.shapes.medium,
+                    colors = ButtonDefaults.buttonColors(MaterialTheme.colors.secondary)
+                ) {
+                    Text(text = screen.name)
+                }
             }
         }
     }

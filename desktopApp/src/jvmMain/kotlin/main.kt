@@ -17,7 +17,7 @@
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.singleWindowApplication
 import com.example.androiddevchallenge.MyApp
-import com.example.androiddevchallenge.devchallenge3.*
+import com.example.androiddevchallenge.MyTheme
 import de.drick.compose.hotpreview.HotPreview
 
 

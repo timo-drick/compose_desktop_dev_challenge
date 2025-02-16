@@ -43,6 +43,8 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import com.example.androiddevchallenge.MyTheme
+import com.example.androiddevchallenge.screenPadding
 import com.example.androiddevchallenge.shared.generated.resources.Res
 import com.example.androiddevchallenge.shared.generated.resources.dark_login
 import com.example.androiddevchallenge.shared.generated.resources.light_login

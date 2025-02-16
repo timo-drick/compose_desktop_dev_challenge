@@ -34,7 +34,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import com.example.androiddevchallenge.MyTheme
+import com.example.androiddevchallenge.bottomNavigationElevation
 import com.example.androiddevchallenge.gridItems
+import com.example.androiddevchallenge.screenPadding
 import de.drick.compose.hotpreview.HotPreview
 import org.jetbrains.compose.resources.painterResource
 import kotlin.math.max
