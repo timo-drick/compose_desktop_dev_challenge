@@ -46,12 +46,10 @@ import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.shared.generated.resources.Res
 import com.example.androiddevchallenge.shared.generated.resources.dark_login
 import com.example.androiddevchallenge.shared.generated.resources.light_login
-import de.drick.compose.hotpreview.HotPreview
 import org.jetbrains.compose.resources.painterResource
 
 
-@HotPreview(name = "dark", widthDp = 400, heightDp = 600)
-@HotPreview(widthDp = 400, heightDp = 600, darkMode = false)
+@PreviewCollection
 @Composable
 fun LoginPreview() {
     MyTheme {

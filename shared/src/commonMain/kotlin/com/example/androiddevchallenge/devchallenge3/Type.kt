@@ -28,7 +28,7 @@ import com.example.androiddevchallenge.shared.generated.resources.kulim_park_reg
 import com.example.androiddevchallenge.shared.generated.resources.lato_bold
 import org.jetbrains.compose.resources.Font
 
- @Composable
+@Composable
 private fun Kulim() = FontFamily(
     Font(Res.font.kulim_park_light, FontWeight.Light),
     Font(Res.font.kulim_park_regular, FontWeight.Normal),

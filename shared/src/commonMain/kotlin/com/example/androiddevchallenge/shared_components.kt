@@ -40,3 +40,16 @@ inline fun <T> LazyListScope.gridItems(
         }
     }
 }
+
+@Composable
+operator fun PaddingValues.plus(padding: PaddingValues): PaddingValues {
+    val layoutDirection = LocalLayoutDirection.current
+    return PaddingValues.Absolute(
+        left = calculateLeftPadding(layoutDirection) + padding.calculateLeftPadding(layoutDirection),
+        top = calculateTopPadding() + padding.calculateTopPadding(),
+        right = calculateRightPadding(layoutDirection) + padding.calculateRightPadding(
+            layoutDirection
+        ),
+        bottom = calculateBottomPadding() + padding.calculateBottomPadding()
+    )
+}

@@ -30,7 +30,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
@@ -47,9 +46,14 @@ enum class NavItems(val title: String, val vector: ImageVector) {
     PROFILE("PROFILE", Icons.Default.AccountCircle)
 }
 
-@HotPreview(name = "phone dark", widthDp = 400, heightDp = 800, fontScale = 1f, darkMode = true)
+@HotPreview(group = "dark",name = "phone dark", widthDp = 400, heightDp = 800, fontScale = 1f, darkMode = true)
 @HotPreview(name = "phone", widthDp = 400, heightDp = 800, fontScale = 1.5f, darkMode = false)
-@HotPreview(name = "dark", widthDp = 1000, heightDp = 800, fontScale = 1f)
+@HotPreview(group = "dark", name = "dark", widthDp = 1000, heightDp = 800, fontScale = 1f)
+@HotPreview(widthDp = 1000, heightDp = 800, fontScale = 1.5f, darkMode = false)
+annotation class PreviewCollection
+
+
+@PreviewCollection
 @HotPreview(widthDp = 1000, heightDp = 800, fontScale = 1.5f, darkMode = false)
 @Composable
 fun PreviewHomeScreen() {

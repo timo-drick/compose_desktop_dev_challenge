@@ -62,11 +62,11 @@ import kotlin.math.max
 @HotPreview
 @Composable
 private fun PreviewRatingBar() {
-    RatingBar(2)
+    RatingBar(1)
 }
 @HotPreview
 @Composable
-private fun PreviewRatingBa5() {
+private fun PreviewRatingBar5() {
     RatingBar(5)
 }
 
@@ -165,6 +165,7 @@ fun PuppyDetailStatic(params: DetailScreen, onBack: () -> Unit) {
     }
     Box(
         Modifier.fillMaxWidth()
+            .windowInsetsPadding(WindowInsets.systemBars)
             .clickable { toggelUI() }
             .onGloballyPositioned {
                 if (positioned.not()) {

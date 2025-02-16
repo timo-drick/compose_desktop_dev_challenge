@@ -33,15 +33,22 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import com.example.androiddevchallenge.gridItems
+import com.example.androiddevchallenge.plus
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
-fun Overview(onSelect: (Puppy, Rect) -> Unit) {
+fun Overview(
+    contentPadding: PaddingValues,
+    modifier: Modifier = Modifier,
+    onSelect: (Puppy, Rect) -> Unit
+) {
     val itemSpacing = 8.dp
+    val padding = contentPadding + PaddingValues(8.dp)
     LazyColumn(
-        contentPadding = PaddingValues(itemSpacing)
+        modifier = modifier,
+        contentPadding = padding
     ) {
-        gridItems(columns = 2, items = Puppy.values().toList(), gridPadding = itemSpacing) { item ->
+        gridItems(columns = 2, items = Puppy.entries, gridPadding = itemSpacing) { item ->
             Surface(shape = RoundedCornerShape(8.dp), elevation = 8.dp) {
                 PuppyListItem(puppy = item, onClick = onSelect)
             }

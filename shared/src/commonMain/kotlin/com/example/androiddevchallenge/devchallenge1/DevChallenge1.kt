@@ -5,6 +5,9 @@ import androidx.compose.animation.core.FiniteAnimationSpec
 import androidx.compose.animation.core.snap
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -120,7 +123,7 @@ fun <T> SaveableCrossfade(
 @HotPreview(widthDp = 600, heightDp = 500)
 @HotPreview(name = "small font", widthDp = 600, heightDp = 500, fontScale = 0.5f)
 @Composable
-fun PreviewPuppApp() {
+fun PreviewPuppyApp() {
     PuppyTheme {
         PuppyApp()
     }
@@ -130,6 +133,7 @@ fun PreviewPuppApp() {
 @Composable
 fun PuppyApp() {
     var screen by remember { mutableStateOf<Screen>(OverviewScreen) }
+    val insets = WindowInsets.safeDrawing
     PuppyTheme(darkTheme = true) {
         AnimatedContent(
             targetState = screen,
@@ -139,6 +143,7 @@ fun PuppyApp() {
         ) { targetScreen ->
             when (targetScreen) {
                 is OverviewScreen -> Overview(
+                    contentPadding = insets.asPaddingValues(),
                     onSelect = { puppy, imagePosition ->
                         screen = DetailScreen(puppy, imagePosition)
                     }

@@ -140,7 +140,10 @@ fun CountPoserApp() {
         Box(
             Modifier
                 .fillMaxSize()
-                .combinedClickable(onClick = { startCounter() }, onLongClick = { if (isRunning.not()) dialogVisible = true })
+                .combinedClickable(
+                    onClick = { startCounter() },
+                    onLongClick = { if (isRunning.not()) dialogVisible = true }
+                )
         ) {
             if (isRunning.not()) {
                 Column(Modifier.align(Alignment.TopCenter), horizontalAlignment = Alignment.CenterHorizontally) {
