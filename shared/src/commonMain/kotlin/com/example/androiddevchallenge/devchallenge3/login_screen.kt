@@ -46,8 +46,7 @@ import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.MyTheme
 import com.example.androiddevchallenge.screenPadding
 import com.example.androiddevchallenge.shared.generated.resources.Res
-import com.example.androiddevchallenge.shared.generated.resources.dark_login
-import com.example.androiddevchallenge.shared.generated.resources.light_login
+import com.example.androiddevchallenge.shared.generated.resources.login
 import org.jetbrains.compose.resources.painterResource
 
 
@@ -61,7 +60,6 @@ fun LoginPreview() {
 
 @Composable
 fun LoginScreen(onLogin: () -> Unit) {
-    val res = if (isSystemInDarkTheme()) Res.drawable.dark_login else Res.drawable.light_login
 
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -71,7 +69,7 @@ fun LoginScreen(onLogin: () -> Unit) {
         color = MaterialTheme.colors.background
     ) {
         Image(
-            painterResource(res),
+            painterResource(Res.drawable.login),
             "background",
             Modifier.fillMaxSize(),
             contentScale = ContentScale.FillBounds

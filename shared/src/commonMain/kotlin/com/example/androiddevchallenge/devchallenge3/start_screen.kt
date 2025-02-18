@@ -39,9 +39,7 @@ import com.example.androiddevchallenge.MyTheme
 import com.example.androiddevchallenge.Screen
 import com.example.androiddevchallenge.shared.generated.resources.*
 import com.example.androiddevchallenge.shared.generated.resources.Res
-import com.example.androiddevchallenge.shared.generated.resources.dark_login
-import com.example.androiddevchallenge.shared.generated.resources.dark_logo
-import com.example.androiddevchallenge.shared.generated.resources.light_login
+import com.example.androiddevchallenge.shared.generated.resources.login
 import de.drick.compose.hotpreview.HotPreview
 import org.jetbrains.compose.resources.painterResource
 
@@ -60,9 +58,6 @@ fun PreviewStartScreen() {
 
 @Composable
 fun StartScreen(onContinue: (Screen) -> Unit) {
-    val resLogin = if (isSystemInDarkTheme()) Res.drawable.dark_login else Res.drawable.light_login
-    val resLogo = if (isSystemInDarkTheme()) Res.drawable.dark_logo else Res.drawable.light_logo
-
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -70,7 +65,7 @@ fun StartScreen(onContinue: (Screen) -> Unit) {
         contentAlignment = Alignment.Center
     ) {
         Image(
-            painterResource(resLogin),
+            painterResource(Res.drawable.login),
             "background",
             Modifier.fillMaxSize(),
             contentScale = ContentScale.FillBounds
@@ -80,7 +75,7 @@ fun StartScreen(onContinue: (Screen) -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            Image(painterResource(resLogo), "mysoothe")
+            Image(painterResource(Res.drawable.logo), "mysoothe")
             Spacer(Modifier.height(32.dp))
             Screen.entries
                 .filterNot { it == Screen.Start }
