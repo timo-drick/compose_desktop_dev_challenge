@@ -45,26 +45,72 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.androiddevchallenge.MyTheme
+import com.example.androiddevchallenge.shared.generated.resources.*
+import com.example.androiddevchallenge.shared.generated.resources.Res
+import com.example.androiddevchallenge.shared.generated.resources.clear
+import com.example.androiddevchallenge.shared.generated.resources.cloudy_1
+import com.example.androiddevchallenge.shared.generated.resources.cloudy_2
 import de.drick.compose.hotpreview.HotPreview
 import kotlinx.coroutines.isActive
+import kotlinx.datetime.DayOfWeek
+import org.jetbrains.compose.resources.stringResource
 
-enum class CloudCover(val description: String) {
-    CLEAR("Clear"), CLOUDY_1("Single clouds"), CLOUDY_2("Cloudy"), CLOUDY_3("Very cloudy"), OVERCAST("Overcast");
+enum class CloudCover {
+    CLEAR, CLOUDY_1, CLOUDY_2, CLOUDY_3, OVERCAST;
 }
 
-data class Weather(val day: String, val clouds: CloudCover, val windSpeedKmh: Int, val rain: Boolean)
+@Composable
+fun CloudCover.stringResource() = when (this) {
+    CloudCover.CLEAR -> stringResource(Res.string.clear)
+    CloudCover.CLOUDY_1 -> stringResource(Res.string.cloudy_1)
+    CloudCover.CLOUDY_2 -> stringResource(Res.string.cloudy_2)
+    CloudCover.CLOUDY_3 -> stringResource(Res.string.cloudy_3)
+    CloudCover.OVERCAST -> stringResource(Res.string.overcast)
+}
+
+@Composable
+fun DayOfWeek.stringResource() = when (this) {
+    DayOfWeek.MONDAY -> stringResource(Res.string.monday)
+    DayOfWeek.TUESDAY -> stringResource(Res.string.tuesday)
+    DayOfWeek.WEDNESDAY -> stringResource(Res.string.wednesday)
+    DayOfWeek.THURSDAY -> stringResource(Res.string.thursday)
+    DayOfWeek.FRIDAY -> stringResource(Res.string.friday)
+    DayOfWeek.SATURDAY -> "Not supported"
+    DayOfWeek.SUNDAY -> "Not supported"
+    else -> TODO()
+}
+
+data class Weather(val day: DayOfWeek, val clouds: CloudCover, val windSpeedKmh: Int, val rain: Boolean)
+
+@HotPreview("Canvas", widthDp = 360, heightDp = 640)
+@HotPreview("German", widthDp = 360, heightDp = 640, locale = "de")
+@Composable
+private fun PreviewForecastView() {
+    MyTheme {
+        ForecastView()
+    }
+}
+
+
+@HotPreview("Landscape", widthDp = 891, heightDp = 411)
+@Composable
+private fun PreviewForecastView2() {
+    MyTheme {
+        ForecastView()
+    }
+}
 
 @OptIn(ExperimentalFoundationApi::class)
-@HotPreview("Canvas", widthDp = 360, heightDp = 640)
 @Composable
 fun ForecastView() {
     val test = 10
     val weatherForecast = listOf(
-        Weather("Monday", CloudCover.CLOUDY_2, 10, false),
-        Weather("Tuesday", CloudCover.CLOUDY_3, 30, true),
-        Weather("Wednesday", CloudCover.CLEAR, 10, false),
-        Weather("Thursday", CloudCover.CLOUDY_1, 60, false),
-        Weather("Friday", CloudCover.OVERCAST, 100, true),
+        Weather(DayOfWeek.MONDAY, CloudCover.CLOUDY_2, 10, false),
+        Weather(DayOfWeek.TUESDAY, CloudCover.CLOUDY_3, 30, true),
+        Weather(DayOfWeek.WEDNESDAY, CloudCover.CLEAR, 10, false),
+        Weather(DayOfWeek.THURSDAY, CloudCover.CLOUDY_1, 60, false),
+        Weather(DayOfWeek.FRIDAY, CloudCover.OVERCAST, 100, true),
     )
 
     var seconds by remember { mutableStateOf(0.0) }
@@ -81,7 +127,7 @@ fun ForecastView() {
         stickyHeader {
             Box(Modifier.fillMaxWidth().background(Color.White.copy(alpha = 0.8f)).padding(8.dp)) {
                 Text(
-                    "Weather forecast of the next days",
+                    stringResource(Res.string.title),
                     Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center
                 )
@@ -91,10 +137,10 @@ fun ForecastView() {
             Box(Modifier.clip(RoundedCornerShape(8.dp))) {
                 Row {
                     Column(Modifier.width(120.dp)) {
-                        Text(weather.day)
-                        Text(weather.clouds.description)
+                        Text(weather.day.stringResource())
+                        Text(weather.clouds.stringResource())
                         Text("Wind: ${weather.windSpeedKmh} Km/h")
-                        if (weather.rain) Text("Rainy")
+                        if (weather.rain) Text(stringResource(Res.string.rainy))
                     }
                     Box(Modifier.weight(1f)) {
                         WeatherCanvas(

@@ -22,7 +22,7 @@ kotlin {
             implementation(compose.material)
             implementation(compose.materialIconsExtended)
             implementation(compose.components.resources)
-
+            implementation(libs.kotlinx.datetime)
             implementation(libs.drick.compose.hotpreview)
         }
     }

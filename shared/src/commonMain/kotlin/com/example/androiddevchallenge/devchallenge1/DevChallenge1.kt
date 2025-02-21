@@ -120,7 +120,7 @@ fun <T> SaveableCrossfade(
     }
 }
 
-@HotPreview(widthDp = 600, heightDp = 500)
+@HotPreview(name = "normal", widthDp = 600, heightDp = 500)
 @HotPreview(name = "small font", widthDp = 600, heightDp = 500, fontScale = 0.5f)
 @Composable
 fun PreviewPuppyApp() {

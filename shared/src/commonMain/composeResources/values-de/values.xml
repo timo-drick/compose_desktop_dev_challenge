@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <string name="app_name">Dev challenge app</string>
+
+    <string name="title">Wettervorhersage für die nächsten Tage</string>
+
+    <string name="clear">Klar</string>
+    <string name="cloudy_1">Vereinzelt Wolken</string>
+    <string name="cloudy_2">Bewölkt</string>
+    <string name="cloudy_3">Sehr bewölkt</string>
+    <string name="overcast">Bedeckt</string>
+
+    <string name="rainy">Regnerisch</string>
+
+    <string name="monday">Montag</string>
+    <string name="tuesday">Dienstag</string>
+    <string name="wednesday">Mittwoch</string>
+    <string name="thursday">Donnerstag</string>
+    <string name="friday">Freitag</string>
+
+</resources>
