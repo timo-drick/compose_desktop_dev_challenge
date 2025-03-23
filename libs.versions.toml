@@ -1,9 +1,9 @@
 [versions]
-kotlin = "2.1.0"
+kotlin = "2.1.10"
 
-androidGradlePlugin = "8.8.1"
-androidLibraryPlugin = "8.8.1"
-benManesPlugin = "0.51.0"
+androidGradlePlugin = "8.7.3"
+androidLibraryPlugin = "8.7.3"
+benManesPlugin = "0.52.0"
 johnrengelmanShadowPlugin = "8.1.1"
 
 compileSdk = "35"
@@ -20,7 +20,7 @@ androidxAppcompat = "1.7.0"
 
 compose = "1.7.3"
 
-activityComposeVersion = "1.10.0"
+activityComposeVersion = "1.10.1"
 
 logbackClassicVersion = "1.5.12"
 
@@ -31,7 +31,7 @@ robolectricVersion = "4.14"
 testRunner = "1.6.2"
 testUiautomotor = "2.3.0"
 
-hotpreview = "0.1.4"
+hotpreview = "0.1.6"
 
 [libraries]
 

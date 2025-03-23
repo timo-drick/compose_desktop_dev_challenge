@@ -26,7 +26,7 @@ import kotlin.math.sin
 private val sunGradient = listOf(Color.Yellow, Color.Yellow.copy(alpha = 0.3f))
 private val coronaGradient = listOf(Color.Yellow.copy(alpha = 0.7f), Color.Yellow.copy(alpha = 0.0f))
 
-fun DrawScope.Sun(seconds: Double) {
+fun DrawScope.sun(seconds: Double) {
     val coronaIntensity = ((sin(seconds * 2.0) + 1.0) / 2.0).toFloat()
     val rCorona = .9f + 0.1f * coronaIntensity
     drawCircle(brush = Brush.radialGradient(coronaGradient, Offset.Zero, rCorona), rCorona, Offset.Zero)
@@ -37,12 +37,12 @@ fun DrawScope.Sun(seconds: Double) {
     drawCircle(brush = Brush.radialGradient(sunGradient, Offset.Zero, r), r, Offset.Zero)
 }
 
-fun DrawScope.SunnyWeather(seconds: Double, clouds: Int, wind: Float) {
-    Sun(seconds)
+fun DrawScope.sunnyWeather(seconds: Double, clouds: Int, wind: Float) {
+    sun(seconds)
     if (clouds > 0) {
         drawContext.canvas.save()
         drawContext.canvas.translate(0f, 0.4f)
-        Clouds(seconds, clouds, wind, false)
+        clouds(seconds, clouds, wind, false)
         drawContext.canvas.restore()
     }
 }
@@ -55,7 +55,7 @@ fun normalizeTimeX(time: Double) = (((time * 1000.0 % 1000.0) / 1000.0) * 4.0 - 
 
 fun Vec2.toOffset(): Offset = Offset(x.toFloat(), y.toFloat())
 
-fun DrawScope.Clouds(seconds: Double, clouds: Int, wind: Float, rain: Boolean) {
+fun DrawScope.clouds(seconds: Double, clouds: Int, wind: Float, rain: Boolean) {
     val canvas = drawContext.canvas
     repeat(clouds) { index ->
         val n1 = noise1(index.toFloat() * 21)
@@ -65,15 +65,15 @@ fun DrawScope.Clouds(seconds: Double, clouds: Int, wind: Float, rain: Boolean) {
         canvas.translate(posX, n2 * 0.5f)
         canvas.scale(0.6f, 0.6f)
         if (rain) {
-            RainCloud(seconds, wind)
+            rainCloud(seconds, wind)
         } else {
-            Cloud()
+            cloud()
         }
         canvas.restore()
     }
 }
 
-fun DrawScope.Cloud() {
+fun DrawScope.cloud() {
     val canvas = drawContext.canvas
     canvas.save()
     canvas.translate(0f, -1f)
@@ -82,14 +82,14 @@ fun DrawScope.Cloud() {
     canvas.restore()
 }
 
-fun DrawScope.RainCloud(seconds: Double, wind: Float) {
+fun DrawScope.rainCloud(seconds: Double, wind: Float) {
     repeat(200) { index ->
         val n1 = noise1(index.toFloat())
         val n2 = (noise1(index.toFloat() * 1434) * 0.9f) + 0.1f
         val time = seconds + n1 * 243
         val xOffset = n1 * 2f - 1f
         val speed = n2.pow(3f) * 0.9f + 0.1f
-        Rain(time, xOffset, speed, wind)
+        rain(time, xOffset, speed, wind)
     }
     val canvas = drawContext.canvas
     canvas.save()
@@ -99,7 +99,7 @@ fun DrawScope.RainCloud(seconds: Double, wind: Float) {
     canvas.restore()
 }
 
-fun DrawScope.Rain(seconds: Double, xOffset: Float, speed: Float, wind: Float) {
+fun DrawScope.rain(seconds: Double, xOffset: Float, speed: Float, wind: Float) {
     val yPos = (((seconds * 100.0 * speed) % 100) / 50f).toFloat()
 
     val direction = Vec2(2f * wind, 1f).normalized

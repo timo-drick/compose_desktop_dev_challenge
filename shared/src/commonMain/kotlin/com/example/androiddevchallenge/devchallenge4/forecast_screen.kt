@@ -32,6 +32,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -42,7 +43,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameMillis
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.MyTheme
@@ -52,6 +52,7 @@ import com.example.androiddevchallenge.shared.generated.resources.clear
 import com.example.androiddevchallenge.shared.generated.resources.cloudy_1
 import com.example.androiddevchallenge.shared.generated.resources.cloudy_2
 import de.drick.compose.hotpreview.HotPreview
+import de.drick.compose.hotpreview.HotPreviewScreenSizes
 import kotlinx.coroutines.isActive
 import kotlinx.datetime.DayOfWeek
 import org.jetbrains.compose.resources.stringResource
@@ -83,35 +84,35 @@ fun DayOfWeek.stringResource() = when (this) {
 
 data class Weather(val day: DayOfWeek, val clouds: CloudCover, val windSpeedKmh: Int, val rain: Boolean)
 
-@HotPreview("Canvas", widthDp = 360, heightDp = 640)
-@HotPreview("German", widthDp = 360, heightDp = 640, locale = "de")
+@HotPreview(
+    "Mango",
+    heightDp = 891,
+    fontScale = 1.15f,
+    density = 2.625f, group = "dark", widthDp = 411
+)
+@HotPreview(
+    "German", widthDp = 411, heightDp = 891, fontScale = 1.50f,
+    density = 2.625f, locale = "de", darkMode = false, group = "light"
+)
+@HotPreviewScreenSizes
 @Composable
 private fun PreviewForecastView() {
     MyTheme {
         ForecastView()
     }
 }
-
-
-@HotPreview("Landscape", widthDp = 891, heightDp = 411)
-@Composable
-private fun PreviewForecastView2() {
-    MyTheme {
-        ForecastView()
-    }
-}
+val weatherForecast = listOf(
+    Weather(DayOfWeek.MONDAY, CloudCover.CLOUDY_2, 10, false),
+    Weather(DayOfWeek.TUESDAY, CloudCover.CLOUDY_3, 30, true),
+    Weather(DayOfWeek.WEDNESDAY, CloudCover.CLEAR, 10, false),
+    Weather(DayOfWeek.THURSDAY, CloudCover.CLOUDY_1, 60, false),
+    Weather(DayOfWeek.FRIDAY, CloudCover.OVERCAST, 100, true),
+)
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ForecastView() {
-    val test = 10
-    val weatherForecast = listOf(
-        Weather(DayOfWeek.MONDAY, CloudCover.CLOUDY_2, 10, false),
-        Weather(DayOfWeek.TUESDAY, CloudCover.CLOUDY_3, 30, true),
-        Weather(DayOfWeek.WEDNESDAY, CloudCover.CLEAR, 10, false),
-        Weather(DayOfWeek.THURSDAY, CloudCover.CLOUDY_1, 60, false),
-        Weather(DayOfWeek.FRIDAY, CloudCover.OVERCAST, 100, true),
-    )
+    val test = 11
 
     var seconds by remember { mutableStateOf(0.0) }
     LaunchedEffect(key1 = test) {
@@ -123,31 +124,37 @@ fun ForecastView() {
             }
         }
     }
-    LazyColumn(Modifier.background(Color.White).fillMaxSize(), contentPadding = PaddingValues(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        stickyHeader {
-            Box(Modifier.fillMaxWidth().background(Color.White.copy(alpha = 0.8f)).padding(8.dp)) {
-                Text(
-                    stringResource(Res.string.title),
-                    Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.Center
-                )
+    Scaffold {
+        LazyColumn(
+            Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(8.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            stickyHeader {
+                Box(Modifier.fillMaxWidth().padding(8.dp)) {
+                    Text(
+                        stringResource(Res.string.title),
+                        Modifier.fillMaxWidth(),
+                        textAlign = TextAlign.Center
+                    )
+                }
             }
-        }
-        items(weatherForecast) { weather ->
-            Box(Modifier.clip(RoundedCornerShape(8.dp))) {
-                Row {
-                    Column(Modifier.width(120.dp)) {
-                        Text(weather.day.stringResource())
-                        Text(weather.clouds.stringResource())
-                        Text("Wind: ${weather.windSpeedKmh} Km/h")
-                        if (weather.rain) Text(stringResource(Res.string.rainy))
-                    }
-                    Box(Modifier.weight(1f)) {
-                        WeatherCanvas(
-                            Modifier.aspectRatio(1f).clip(RoundedCornerShape(8.dp)),
-                            seconds = seconds,
-                            weather = weather
-                        )
+            items(weatherForecast) { weather ->
+                Box(Modifier.clip(RoundedCornerShape(8.dp))) {
+                    Row {
+                        Column(Modifier.width(130.dp)) {
+                            Text(weather.day.stringResource())
+                            Text(weather.clouds.stringResource())
+                            Text("Wind: ${weather.windSpeedKmh} Km/h")
+                            if (weather.rain) Text(stringResource(Res.string.rainy))
+                        }
+                        Box(Modifier.weight(1f)) {
+                            WeatherCanvas(
+                                modifier = Modifier.aspectRatio(1f).clip(RoundedCornerShape(8.dp)),
+                                seconds = seconds,
+                                weather = weather
+                            )
+                        }
                     }
                 }
             }
@@ -155,48 +162,3 @@ fun ForecastView() {
     }
 }
 
-val skyColor = Color(0xFF9FF3FF)
-val darkSkyColor = Color(0xFFC0DDE2)
-
-@Composable
-fun WeatherCanvas(modifier: Modifier, seconds: Double, weather: Weather) {
-    val clouds = when (weather.clouds) {
-        CloudCover.CLEAR -> 0
-        CloudCover.CLOUDY_1 -> 1
-        CloudCover.CLOUDY_2 -> 2
-        CloudCover.CLOUDY_3 -> 3
-        CloudCover.OVERCAST -> 4
-    }
-    val wind = (weather.windSpeedKmh.toFloat() / 150f).coerceIn(0.1f, 1f)
-    val sunnyWeather = clouds < 3 && weather.rain.not()
-    Canvas(
-        modifier = modifier.background(if (sunnyWeather) skyColor else darkSkyColor)
-    ) {
-        val canvas = drawContext.canvas
-        val scale = size.minDimension / 2f
-        canvas.translate(center.x, center.y)
-        canvas.scale(scale, scale)
-        if (sunnyWeather) {
-            SunnyWeather(seconds, clouds, wind)
-        } else {
-            Clouds(seconds, clouds, wind, weather.rain)
-        }
-    }
-}
-
-/*@Preview("Light Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun LightPreview() {
-    MyTheme {
-        MyApp()
-    }
-}
-
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun DarkPreview() {
-    MyTheme(darkTheme = true) {
-        MyApp()
-    }
-}
-*/
