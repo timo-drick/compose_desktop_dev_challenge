@@ -1,5 +1,5 @@
 [versions]
-kotlin = "2.1.10"
+kotlin = "2.1.20"
 
 androidGradlePlugin = "8.7.3"
 androidLibraryPlugin = "8.7.3"
@@ -10,14 +10,15 @@ compileSdk = "35"
 minSdk = "26"
 targetSdk = "35"
 
-kotlinxCoroutines = "1.9.0"
-kotlinxSerialization = "1.7.3"
+kotlinxCoroutines = "1.10.1"
+kotlinxSerialization = "1.8.0"
 kotlinxCollectionsImmutable = "0.3.8"
 kotlinxDateTime = "0.6.2"
 
 androidxAnnotation = "1.9.1"
 androidxAppcompat = "1.7.0"
 
+#compose = "1.8.0-beta02"
 compose = "1.7.3"
 
 activityComposeVersion = "1.10.1"

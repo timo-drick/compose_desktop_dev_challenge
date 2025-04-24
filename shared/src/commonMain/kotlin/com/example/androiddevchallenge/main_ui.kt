@@ -17,19 +17,21 @@ enum class Screen {
 
 @Composable
 fun MyApp() {
+    MyTheme {
+        var currentScreen by remember { mutableStateOf<Screen>(Screen.Start) }
 
-    var currentScreen by remember { mutableStateOf<Screen>(Screen.Start) }
+        Crossfade(targetState = currentScreen) { screen ->
+            when (screen) {
+                Screen.Start -> StartScreen(onContinue = {
+                    currentScreen = it
+                })
 
-    Crossfade(targetState = currentScreen) { screen ->
-        when (screen) {
-            Screen.Start -> StartScreen(onContinue = {
-                currentScreen = it
-            })
-            Screen.Login -> LoginScreen(onLogin = { currentScreen = Screen.Home })
-            Screen.Home -> HomeScreen()
-            Screen.Puppy -> PuppyApp()
-            Screen.CountPoser -> CountPoserApp()
-            Screen.Forecast -> ForecastView()
+                Screen.Login -> LoginScreen(onLogin = { currentScreen = Screen.Home })
+                Screen.Home -> HomeScreen()
+                Screen.Puppy -> PuppyApp()
+                Screen.CountPoser -> CountPoserApp()
+                Screen.Forecast -> ForecastView()
+            }
         }
     }
 }

@@ -13,11 +13,13 @@ kotlin {
             dependencies {
                 implementation(compose.desktop.currentOs)
                 implementation(project(":shared"))
+                implementation(compose.foundation)
                 implementation(libs.drick.compose.hotpreview)
                 implementation(compose.components.resources)
             }
         }
     }
+    jvmToolchain(17)
 }
 
 compose.desktop {

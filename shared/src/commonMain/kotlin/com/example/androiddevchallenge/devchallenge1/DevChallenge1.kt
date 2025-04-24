@@ -98,30 +98,11 @@ fun PuppyTheme(
 }
 
 sealed class Screen
-object OverviewScreen : Screen()
+data object OverviewScreen : Screen()
 data class DetailScreen(val puppy: Puppy, val imagePosition: Rect) : Screen()
 
-@Composable
-fun <T> SaveableCrossfade(
-    targetState: T,
-    modifier: Modifier = Modifier,
-    animationSpec: FiniteAnimationSpec<Float> = tween(),
-    content: @Composable (T) -> Unit
-) {
-    val saveableStateHolder = rememberSaveableStateHolder()
-    Crossfade(
-        targetState = targetState,
-        modifier = modifier,
-        animationSpec = animationSpec
-    ) {
-        saveableStateHolder.SaveableStateProvider(it.hashCode()) {
-            content(it)
-        }
-    }
-}
-
-@HotPreview(name = "normal", widthDp = 600, heightDp = 500)
-@HotPreview(name = "small font", widthDp = 600, heightDp = 500, fontScale = 0.5f)
+@HotPreview(name = "test", group = "te", widthDp = 673, density = 1.0f, heightDp = 841)
+@HotPreview(name = "big font", widthDp = 892, heightDp = 411, fontScale = 1.5f, density = 2.625f)
 @Composable
 fun PreviewPuppyApp() {
     PuppyTheme {
@@ -129,7 +110,6 @@ fun PreviewPuppyApp() {
     }
 }
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun PuppyApp() {
     var screen by remember { mutableStateOf<Screen>(OverviewScreen) }
@@ -138,7 +118,7 @@ fun PuppyApp() {
         AnimatedContent(
             targetState = screen,
             transitionSpec = {
-                fadeIn(tween(100)) with fadeOut(snap(500))
+                fadeIn(tween(100)) togetherWith fadeOut(snap(500))
             }
         ) { targetScreen ->
             when (targetScreen) {

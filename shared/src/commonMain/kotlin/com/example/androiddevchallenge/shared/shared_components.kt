@@ -1,4 +1,4 @@
-package com.example.androiddevchallenge
+package com.example.androiddevchallenge.shared
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyItemScope
@@ -41,15 +41,28 @@ inline fun <T> LazyListScope.gridItems(
     }
 }
 
+
 @Composable
-operator fun PaddingValues.plus(padding: PaddingValues): PaddingValues {
-    val layoutDirection = LocalLayoutDirection.current
+fun PaddingValues.add(start: Dp = 0.dp, top: Dp = 0.dp, left: Dp = 0.dp, bottom: Dp = 0.dp) =
+    this.plus(PaddingValues(start, top, left, bottom))
+
+@Composable
+fun PaddingValues.add(horizontal: Dp = 0.dp, vertical: Dp = 0.dp) =
+    this.plus(PaddingValues(horizontal = horizontal, vertical = vertical))
+
+@Composable
+fun PaddingValues.add(size: Dp) = this.plus(PaddingValues(size))
+
+@Composable
+infix operator fun PaddingValues.plus(padding: PaddingValues): PaddingValues {
+    val ld = LocalLayoutDirection.current
     return PaddingValues.Absolute(
-        left = calculateLeftPadding(layoutDirection) + padding.calculateLeftPadding(layoutDirection),
+        left = calculateLeftPadding(ld) + padding.calculateLeftPadding(ld),
         top = calculateTopPadding() + padding.calculateTopPadding(),
-        right = calculateRightPadding(layoutDirection) + padding.calculateRightPadding(
-            layoutDirection
+        right = calculateRightPadding(ld) + padding.calculateRightPadding(
+            ld
         ),
         bottom = calculateBottomPadding() + padding.calculateBottomPadding()
     )
 }
+

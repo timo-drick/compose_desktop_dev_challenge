@@ -10,9 +10,7 @@ fun main() {
     CanvasBasedWindow(
         canvasElementId = "ComposeTarget"
     ) {
-        MyTheme {
-            MyApp()
-        }
+        MyApp()
     }
 }
 

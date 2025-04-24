@@ -46,10 +46,15 @@ import com.example.androiddevchallenge.MyTheme
 import com.example.androiddevchallenge.screenPadding
 import com.example.androiddevchallenge.shared.generated.resources.Res
 import com.example.androiddevchallenge.shared.generated.resources.login
+import de.drick.compose.hotpreview.HotPreviewFontScale
+import de.drick.compose.hotpreview.HotPreviewLightDark
+import de.drick.compose.hotpreview.HotPreviewScreenSizes
 import org.jetbrains.compose.resources.painterResource
 
 
 @PreviewCollection
+@HotPreviewFontScale
+@HotPreviewLightDark
 @Composable
 fun LoginPreview() {
     MyTheme {

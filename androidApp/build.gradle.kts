@@ -14,6 +14,9 @@ android {
         targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+
+        resourceConfigurations += listOf("de", "en", "fr")
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Dev challenge app</string>
 
-    <string name="title">Wettervorhersage für die nächsten Tage</string>
+    <string name="title">Wettervorhersage</string>
 
     <string name="clear">Klar</string>
     <string name="cloudy_1">Vereinzelt Wolken</string>

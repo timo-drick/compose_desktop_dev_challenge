@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Dev challenge app</string>
 
-    <string name="title">Weather forecast of the next days</string>
+    <string name="title">Weather forecast</string>
 
     <string name="clear">Clear</string>
     <string name="cloudy_1">Single clouds</string>

@@ -21,19 +21,15 @@ import com.example.androiddevchallenge.MyTheme
 import de.drick.compose.hotpreview.HotPreview
 
 
-@HotPreview
-@HotPreview(darkMode = false)
+@HotPreview(widthDp = 411, heightDp = 891, density = 1.0f)
+@HotPreview(darkMode = false, heightDp = 411, widthDp = 891, density = 1.0f)
 @Composable
 fun TestPreview() {
-    MyTheme {
-        MyApp()
-    }
+    MyApp()
 }
 
 fun main() {
     singleWindowApplication {
-        MyTheme {
-            MyApp()
-        }
+        MyApp()
     }
 }

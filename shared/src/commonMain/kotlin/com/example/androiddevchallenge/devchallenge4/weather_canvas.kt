@@ -18,8 +18,7 @@ class WeatherProvider : HotPreviewParameterProvider<Weather> {
     override val values: Sequence<Weather> = weatherForecast.asSequence()
 }
 
-@HotPreview(name = "dark", widthDp = 200, heightDp = 200)
-@HotPreview(name = "light", widthDp = 200, heightDp = 200, darkMode = false)
+@HotPreview(widthDp = 200, heightDp = 200)
 @Composable
 private fun PreviewWeatherCanvas(
     @HotPreviewParameter(WeatherProvider::class) weather: Weather

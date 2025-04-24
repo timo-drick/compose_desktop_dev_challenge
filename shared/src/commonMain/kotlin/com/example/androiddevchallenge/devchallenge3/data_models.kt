@@ -20,7 +20,25 @@ import com.example.androiddevchallenge.shared.generated.resources.Res
 import com.example.androiddevchallenge.shared.generated.resources.nature_meditations
 import com.example.androiddevchallenge.shared.generated.resources.short_mantras
 import com.example.androiddevchallenge.shared.generated.resources.stress_and_anxiety
+import de.drick.compose.hotpreview.HotPreview
 import org.jetbrains.compose.resources.DrawableResource
+
+@HotPreview(name = "Phone", group = "dark", widthDp = 411, heightDp = 891, fontScale = 1f, darkMode = true,
+    density = 1.0f
+)
+@HotPreview(name = "Phone big font", widthDp = 411, heightDp = 891, fontScale = 1.5f, darkMode = false,
+    density = 1.5f
+)
+@HotPreview(
+    name = "Foldable dark",
+    group = "dark",
+    widthDp = 1000,
+    heightDp = 800,
+    fontScale = 1f
+)
+@HotPreview(name = "Foldable", widthDp = 1000, heightDp = 800, fontScale = 1.5f, darkMode = false)
+annotation class PreviewCollection
+
 
 interface Images {
     val title: String

@@ -31,14 +31,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.MyTheme
 import com.example.androiddevchallenge.bottomNavigationElevation
-import com.example.androiddevchallenge.gridItems
+import com.example.androiddevchallenge.shared.gridItems
 import com.example.androiddevchallenge.screenPadding
+import com.example.androiddevchallenge.shared.add
 import de.drick.compose.hotpreview.HotPreview
+import de.drick.compose.hotpreview.HotPreviewLightDark
 import org.jetbrains.compose.resources.painterResource
 import kotlin.math.max
 import kotlin.math.min
@@ -49,15 +49,11 @@ enum class NavItems(val title: String, val vector: ImageVector) {
     PROFILE("PROFILE", Icons.Default.AccountCircle)
 }
 
-@HotPreview(group = "dark",name = "phone dark", widthDp = 400, heightDp = 800, fontScale = 1f, darkMode = true)
-@HotPreview(name = "phone", widthDp = 400, heightDp = 800, fontScale = 1.5f, darkMode = false)
-@HotPreview(group = "dark", name = "dark", widthDp = 1000, heightDp = 800, fontScale = 1f)
-@HotPreview(widthDp = 1000, heightDp = 800, fontScale = 1.5f, darkMode = false)
-annotation class PreviewCollection
-
-
+@HotPreview(name = "Mango", group = "dark", fontScale = 1.50f,
+    widthDp = 1280, heightDp = 800, density = 1.5f, darkMode = false
+)
 @PreviewCollection
-@HotPreview(widthDp = 1000, heightDp = 800, fontScale = 1.5f, darkMode = false)
+@HotPreviewLightDark
 @Composable
 fun PreviewHomeScreen() {
     MyTheme {
@@ -93,7 +89,7 @@ fun HomeScreen() {
                     elevation = 0.dp,
                     backgroundColor = MaterialTheme.colors.background
                 ) {
-                    NavItems.values().forEach { item ->
+                    NavItems.entries.forEach { item ->
                         val selected = selectedTab == item
                         BottomNavigationItem(
                             selected = selected,
@@ -236,18 +232,4 @@ fun RoundItem(image: Images) {
     }
 }
 
-fun PaddingValues.add(start: Dp = 0.dp, top: Dp = 0.dp, end: Dp = 0.dp, bottom: Dp = 0.dp): PaddingValues {
-    return object : PaddingValues {
-        override fun calculateLeftPadding(layoutDirection: LayoutDirection) =
-            this@add.calculateLeftPadding(layoutDirection) +
-                if (layoutDirection == LayoutDirection.Ltr) start else end
-        override fun calculateTopPadding(): Dp =
-            this@add.calculateTopPadding() + top
-        override fun calculateRightPadding(layoutDirection: LayoutDirection) =
-            this@add.calculateRightPadding(layoutDirection) +
-                if (layoutDirection == LayoutDirection.Ltr) end else start
-        override fun calculateBottomPadding() =
-            this@add.calculateBottomPadding() + bottom
-    }
-}
 

@@ -16,22 +16,25 @@
 package com.example.androiddevchallenge.devchallenge4
 
 import androidx.compose.animation.core.withInfiniteAnimationFrameMillis
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -46,11 +49,23 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.MyTheme
-import com.example.androiddevchallenge.shared.generated.resources.*
+import com.example.androiddevchallenge.shared.add
+import com.example.androiddevchallenge.shared.fadingEdge
 import com.example.androiddevchallenge.shared.generated.resources.Res
 import com.example.androiddevchallenge.shared.generated.resources.clear
 import com.example.androiddevchallenge.shared.generated.resources.cloudy_1
 import com.example.androiddevchallenge.shared.generated.resources.cloudy_2
+import com.example.androiddevchallenge.shared.generated.resources.cloudy_3
+import com.example.androiddevchallenge.shared.generated.resources.friday
+import com.example.androiddevchallenge.shared.generated.resources.monday
+import com.example.androiddevchallenge.shared.generated.resources.overcast
+import com.example.androiddevchallenge.shared.generated.resources.rainy
+import com.example.androiddevchallenge.shared.generated.resources.thursday
+import com.example.androiddevchallenge.shared.generated.resources.title
+import com.example.androiddevchallenge.shared.generated.resources.tuesday
+import com.example.androiddevchallenge.shared.generated.resources.wednesday
+import com.example.androiddevchallenge.shared.plus
+import com.example.androiddevchallenge.shared.stickyHeaderContentPaddingAware
 import de.drick.compose.hotpreview.HotPreview
 import de.drick.compose.hotpreview.HotPreviewScreenSizes
 import kotlinx.coroutines.isActive
@@ -91,7 +106,7 @@ data class Weather(val day: DayOfWeek, val clouds: CloudCover, val windSpeedKmh:
     density = 2.625f, group = "dark", widthDp = 411
 )
 @HotPreview(
-    "German", widthDp = 411, heightDp = 891, fontScale = 1.50f,
+    "German", widthDp = 411, heightDp = 891, fontScale = 1.30f,
     density = 2.625f, locale = "de", darkMode = false, group = "light"
 )
 @HotPreviewScreenSizes
@@ -124,18 +139,23 @@ fun ForecastView() {
             }
         }
     }
+    val insetsPadding = WindowInsets.safeDrawing.asPaddingValues()
+    val backgroundTitle = MaterialTheme.colors.background.copy(alpha = 0.4f)
     Scaffold {
+        val listState = rememberLazyListState()
         LazyColumn(
-            Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(8.dp),
+            modifier = Modifier.fillMaxSize().fadingEdge(insetsPadding),
+            state = listState,
+            contentPadding = insetsPadding.add(8.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            stickyHeader {
-                Box(Modifier.fillMaxWidth().padding(8.dp)) {
+            item {
+                Box(Modifier.fillMaxWidth().background(backgroundTitle)) {
                     Text(
-                        stringResource(Res.string.title),
-                        Modifier.fillMaxWidth(),
-                        textAlign = TextAlign.Center
+                        modifier = Modifier.fillMaxWidth(),
+                        text = stringResource(Res.string.title),
+                        textAlign = TextAlign.Center,
+                        style = MaterialTheme.typography.h1
                     )
                 }
             }
@@ -161,4 +181,3 @@ fun ForecastView() {
         }
     }
 }
-
