@@ -6,7 +6,11 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.*
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -27,7 +31,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
-import com.example.androiddevchallenge.devchallenge1.PuppyTheme
+import com.example.androiddevchallenge.MyTheme
 import de.drick.compose.hotpreview.HotPreview
 import kotlinx.coroutines.launch
 
@@ -41,7 +45,7 @@ enum class TimerState {
 @HotPreview(widthDp = 400, heightDp = 400, darkMode = false)
 @Composable
 fun LoginPreview() {
-    PuppyTheme(darkTheme = isSystemInDarkTheme()) {
+    MyTheme(darkTheme = isSystemInDarkTheme()) {
         CountPoserApp()
     }
 }
@@ -50,7 +54,7 @@ fun LoginPreview() {
 @HotPreview(widthDp = 400, heightDp = 400, darkMode = false)
 @Composable
 fun DialogPreview() {
-    PuppyTheme {
+    MyTheme {
         SetTimerDialog(
             currentSeconds = 10,
             newSecondsSet = {}
@@ -69,7 +73,7 @@ fun CountPoserApp() {
     val gradientBase = listOf(Color.Red, Color.Red.copy(alpha = 0f))
     val gradientFilled = listOf(Color.Green, Color.Green.copy(alpha = 0f))
     val blurRadius = with(LocalDensity.current) { 24.dp.toPx() }
-    val counterTextStyle = MaterialTheme.typography.h1.copy(
+    val counterTextStyle = MaterialTheme.typography.titleLarge.copy(
         shadow = Shadow(blurRadius = blurRadius, color = if (isSystemInDarkTheme()) Color.Black else Color.White)
     )
     var counter by remember { mutableStateOf(countDownMax) }
@@ -86,7 +90,7 @@ fun CountPoserApp() {
             }
         )
     }
-    Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+    Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
         var counterMillis by remember { mutableStateOf(0L) }
         var state by remember { mutableStateOf(TimerState.Old) }
         var isRunning by remember { mutableStateOf(false) }

@@ -1,7 +1,7 @@
 package com.example.androiddevchallenge
 
 import androidx.compose.animation.Crossfade
-import androidx.compose.material.Text
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import com.example.androiddevchallenge.devchallenge1.PuppyApp
 import com.example.androiddevchallenge.devchallenge2.CountPoserApp

@@ -27,16 +27,15 @@ import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -124,7 +123,6 @@ val weatherForecast = listOf(
     Weather(DayOfWeek.FRIDAY, CloudCover.OVERCAST, 100, true),
 )
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ForecastView() {
     val test = 11
@@ -140,8 +138,10 @@ fun ForecastView() {
         }
     }
     val insetsPadding = WindowInsets.safeDrawing.asPaddingValues()
-    val backgroundTitle = MaterialTheme.colors.background.copy(alpha = 0.4f)
-    Scaffold {
+    val backgroundTitle = MaterialTheme.colorScheme.background.copy(alpha = 0.4f)
+    Scaffold(
+        contentWindowInsets = WindowInsets.safeDrawing
+    ) {
         val listState = rememberLazyListState()
         LazyColumn(
             modifier = Modifier.fillMaxSize().fadingEdge(insetsPadding),
@@ -155,7 +155,7 @@ fun ForecastView() {
                         modifier = Modifier.fillMaxWidth(),
                         text = stringResource(Res.string.title),
                         textAlign = TextAlign.Center,
-                        style = MaterialTheme.typography.h1
+                        style = MaterialTheme.typography.titleLarge
                     )
                 }
             }

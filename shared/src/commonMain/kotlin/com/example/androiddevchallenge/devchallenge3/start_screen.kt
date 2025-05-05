@@ -17,7 +17,6 @@ package com.example.androiddevchallenge.devchallenge3
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,10 +25,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -43,9 +42,6 @@ import com.example.androiddevchallenge.shared.generated.resources.login
 import de.drick.compose.hotpreview.HotPreview
 import org.jetbrains.compose.resources.painterResource
 
-enum class Action {
-    CONTINUE, COUNT_POSER, PUPPY
-}
 
 @HotPreview(name = "dark", widthDp = 800, heightDp = 900)
 @HotPreview(widthDp = 800, heightDp = 900, darkMode = false)
@@ -61,7 +57,7 @@ fun StartScreen(onContinue: (Screen) -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colors.background),
+            .background(MaterialTheme.colorScheme.background),
         contentAlignment = Alignment.Center
     ) {
         Image(
@@ -86,7 +82,7 @@ fun StartScreen(onContinue: (Screen) -> Unit) {
                         .fillMaxWidth()
                         .height(72.dp),
                     shape = MaterialTheme.shapes.medium,
-                    colors = ButtonDefaults.buttonColors(MaterialTheme.colors.secondary)
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
                 ) {
                     Text(text = screen.name)
                 }

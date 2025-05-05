@@ -15,7 +15,7 @@
  */
 package com.example.androiddevchallenge
 
-import androidx.compose.material.Typography
+import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -42,37 +42,37 @@ private fun Lato() = FontFamily(
 // Set of Material typography styles to start with
 @Composable
 fun typography() = Typography(
-    h1 = TextStyle(
+    titleLarge = TextStyle(
         fontFamily = Kulim(),
         fontWeight = FontWeight.Light,
         fontSize = 28.sp,
         letterSpacing = 1.15.sp
     ),
-    h2 = TextStyle(
+    titleMedium = TextStyle(
         fontFamily = Kulim(),
         fontWeight = FontWeight.Normal,
         fontSize = 15.sp,
         letterSpacing = 1.15.sp
     ),
-    h3 = TextStyle(
+    titleSmall = TextStyle(
         fontFamily = Lato(),
         fontWeight = FontWeight.Bold,
         fontSize = 14.sp,
         letterSpacing = 0.sp
     ),
-    body1 = TextStyle(
+    bodyMedium = TextStyle(
         fontFamily = Lato(),
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp,
         letterSpacing = 0.sp
     ),
-    button = TextStyle(
+    bodyLarge = TextStyle(
         fontFamily = Lato(),
         fontWeight = FontWeight.Bold,
         fontSize = 14.sp,
         letterSpacing = 1.15.sp
     ),
-    caption = TextStyle(
+    headlineSmall = TextStyle(
         fontFamily = Kulim(),
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp,

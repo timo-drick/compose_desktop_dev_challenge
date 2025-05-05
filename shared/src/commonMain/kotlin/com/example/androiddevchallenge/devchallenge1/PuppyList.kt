@@ -20,9 +20,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -49,7 +49,7 @@ fun Overview(
         contentPadding = padding
     ) {
         gridItems(columns = 2, items = Puppy.entries, gridPadding = itemSpacing) { item ->
-            Surface(shape = RoundedCornerShape(8.dp), elevation = 8.dp) {
+            Surface(shape = RoundedCornerShape(8.dp), shadowElevation = 8.dp) {
                 PuppyListItem(puppy = item, onClick = onSelect)
             }
         }
@@ -88,10 +88,10 @@ fun PuppyListItem(puppy: Puppy, onClick: (Puppy, Rect) -> Unit) {
 
 @Composable
 fun ImageCaption(title: String, race: String, creator: String?) {
-    val color = MaterialTheme.colors.primaryVariant.copy(alpha = .5f)
-    Surface(elevation = 0.dp, color = color, modifier = Modifier.fillMaxWidth()) {
+    val color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = .5f)
+    Surface(shadowElevation = 0.dp, color = color, modifier = Modifier.fillMaxWidth()) {
         Column(Modifier.padding(6.dp)) {
-            Text(text = title, style = MaterialTheme.typography.h5, maxLines = 2)
+            Text(text = title, style = MaterialTheme.typography.titleSmall, maxLines = 2)
             Text(text = race, maxLines = 2)
             creator?.let { Text("photo by $it", maxLines = 2) }
         }

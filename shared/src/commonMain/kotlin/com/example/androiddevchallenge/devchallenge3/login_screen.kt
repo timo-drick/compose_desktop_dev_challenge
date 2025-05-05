@@ -23,12 +23,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -70,7 +69,7 @@ fun LoginScreen(onLogin: () -> Unit) {
 
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colors.background
+        color = MaterialTheme.colorScheme.background
     ) {
         Image(
             painterResource(Res.drawable.login),
@@ -79,15 +78,18 @@ fun LoginScreen(onLogin: () -> Unit) {
             contentScale = ContentScale.FillBounds
         )
         Column(Modifier.padding(screenPadding), horizontalAlignment = Alignment.CenterHorizontally) {
-            Text("LOG IN", Modifier.paddingFromBaseline(top = 200.dp, bottom = 32.dp), style = MaterialTheme.typography.h1)
+            Text(
+                modifier = Modifier.paddingFromBaseline(top = 200.dp, bottom = 32.dp),
+                text = "LOG IN",
+                style = MaterialTheme.typography.titleLarge
+            )
             TextField(
                 value = email,
                 modifier = Modifier.fillMaxWidth(),
                 onValueChange = { email = it },
                 placeholder = {
                     Text("Email address")
-                },
-                colors = TextFieldDefaults.textFieldColors(backgroundColor = MaterialTheme.colors.surface)
+                }
             )
             Spacer(Modifier.height(8.dp))
             TextField(
@@ -96,8 +98,7 @@ fun LoginScreen(onLogin: () -> Unit) {
                 onValueChange = { password = it },
                 placeholder = {
                     Text("Password")
-                },
-                colors = TextFieldDefaults.textFieldColors(backgroundColor = MaterialTheme.colors.surface)
+                }
             )
             Spacer(Modifier.height(8.dp))
             Button(

@@ -29,11 +29,15 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.NavigateBefore
+import androidx.compose.material.icons.automirrored.filled.NavigateBefore
 import androidx.compose.material.icons.filled.StarRate
 import androidx.compose.material.icons.outlined.StarRate
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -53,6 +57,7 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.*
+import com.example.androiddevchallenge.MyTheme
 import de.drick.compose.hotpreview.HotPreview
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -78,7 +83,8 @@ fun RatingBar(rating: Int) {
             Icon(
                 imageVector = if (isActive) Icons.Filled.StarRate else Icons.Outlined.StarRate,
                 contentDescription = null,
-                tint = if (isActive) MaterialTheme.colors.secondary else MaterialTheme.colors.onSurface.copy(alpha = 0.7f)
+                tint = if (isActive) MaterialTheme.colorScheme.secondary
+                else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
             )
         }
     }
@@ -86,13 +92,13 @@ fun RatingBar(rating: Int) {
 
 @Composable
 fun DetailTitle(title: String, modifier: Modifier, onBack: () -> Unit) {
-    val surfaceColor = MaterialTheme.colors.surface
-    val headerStyle = MaterialTheme.typography.h1.copy(
-        color = MaterialTheme.colors.onSurface,
+    val surfaceColor = MaterialTheme.colorScheme.surface
+    val headerStyle = MaterialTheme.typography.titleLarge.copy(
+        color = MaterialTheme.colorScheme.onSurface,
         shadow = Shadow(blurRadius = 4f, color = surfaceColor)
     )
     Surface(
-        modifier
+        modifier = modifier
             .background(
                 Brush.verticalGradient(listOf(surfaceColor, Color.Transparent)),
                 alpha = 0.7f
@@ -101,13 +107,17 @@ fun DetailTitle(title: String, modifier: Modifier, onBack: () -> Unit) {
     ) {
         Box {
             IconButton(onClick = onBack) {
-                Icon(Icons.Default.NavigateBefore, "Back", Modifier.size(48.dp), tint = MaterialTheme.colors.secondary)
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.NavigateBefore,
+                    contentDescription = "Back",
+                    modifier = Modifier.size(48.dp), tint = MaterialTheme.colorScheme.secondary
+                )
             }
             Text(
                 title,
                 Modifier.padding(8.dp).align(Alignment.Center),
                 style = headerStyle,
-                color = MaterialTheme.colors.onSurface
+                color = MaterialTheme.colorScheme.onSurface
             )
         }
     }
@@ -117,7 +127,7 @@ fun DetailTitle(title: String, modifier: Modifier, onBack: () -> Unit) {
 @Composable
 private fun PreviewPuppyDetail() {
     val params = DetailScreen(Puppy.Tammy, Rect.Zero)
-    PuppyTheme {
+    MyTheme {
         PuppyDetailStatic(
             params = params,
             onBack = {}
@@ -220,15 +230,15 @@ fun PuppyDetailStatic(params: DetailScreen, onBack: () -> Unit) {
                         modifier = Modifier
                             .padding(bottom = initialScrollDP + 8.dp)
                             .animateContentSize(tween(1000)),
-                        color = MaterialTheme.colors.surface.copy(alpha = 0.7f),
+                        color = MaterialTheme.colorScheme.surface.copy(alpha = 0.7f),
                         shape = RoundedCornerShape(topStart = cornerSize, bottomStart = cornerSize),
-                        contentColor = MaterialTheme.colors.onSurface
+                        contentColor = MaterialTheme.colorScheme.onSurface
                     ) {
                         Column(Modifier.padding(8.dp)) {
                             Text(
                                 params.puppy.race.title,
                                 modifier = Modifier.align(Alignment.End),
-                                style = MaterialTheme.typography.h4
+                                style = MaterialTheme.typography.titleSmall
                             )
                             params.puppy.race.characteristicList.forEachIndexed { index, characteristic ->
                                 Row(Modifier.align(Alignment.End)) {

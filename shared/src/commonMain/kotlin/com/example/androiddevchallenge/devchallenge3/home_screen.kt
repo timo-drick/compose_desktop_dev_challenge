@@ -19,12 +19,21 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Spa
+import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,10 +42,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.MyTheme
-import com.example.androiddevchallenge.bottomNavigationElevation
 import com.example.androiddevchallenge.shared.gridItems
 import com.example.androiddevchallenge.screenPadding
-import com.example.androiddevchallenge.shared.add
 import de.drick.compose.hotpreview.HotPreview
 import de.drick.compose.hotpreview.HotPreviewLightDark
 import org.jetbrains.compose.resources.painterResource
@@ -65,45 +72,40 @@ fun PreviewHomeScreen() {
 fun HomeScreen() {
     var selectedTab by remember { mutableStateOf(NavItems.HOME) }
     Scaffold(
+        contentWindowInsets = WindowInsets.safeDrawing,
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {  },
-                backgroundColor = MaterialTheme.colors.onBackground
+                containerColor = MaterialTheme.colorScheme.onBackground
             ) {
                 Icon(
                     imageVector = Icons.Default.PlayArrow,
                     contentDescription = "play",
                     modifier = Modifier.size(24.dp),
-                    tint = MaterialTheme.colors.background
+                    tint = MaterialTheme.colorScheme.background
                 )
             }
         },
-        floatingActionButtonPosition = FabPosition.Center,
-        isFloatingActionButtonDocked = true,
+        floatingActionButtonPosition = FabPosition.EndOverlay,
         bottomBar = {
-            Surface(
-                elevation = bottomNavigationElevation,
-                color = MaterialTheme.colors.background
-            ) {
-                BottomNavigation(
-                    elevation = 0.dp,
-                    backgroundColor = MaterialTheme.colors.background
-                ) {
+            BottomAppBar(
+                //contentColor = MaterialTheme.colorScheme.background,
+                actions = {
                     NavItems.entries.forEach { item ->
                         val selected = selectedTab == item
-                        BottomNavigationItem(
-                            selected = selected,
-                            onClick = { selectedTab = item },
-                            label = { Text(item.title, style = MaterialTheme.typography.caption) },
-                            icon = { Icon(item.vector, item.title, Modifier.size(18.dp)) }
-                        )
+                        IconButton(
+                            //selected = selected,
+                            onClick = { selectedTab = item }
+                        ) {
+                            //label = { Text(item.title, style = MaterialTheme.typography.caption) },
+                            Icon(item.vector, item.title, Modifier.size(18.dp))
+                        }
                     }
                 }
-            }
+            )
         },
         content = { contentPadding ->
-            val fabSizeHalf = 56.dp / 2
-            HomeContent(contentPadding.add(bottom = fabSizeHalf + 8.dp))
+            HomeContent(contentPadding)
         }
     )
 }
@@ -124,7 +126,6 @@ fun HomeContent(contentPadding: PaddingValues) {
                     placeholder = {
                         Text("Search")
                     },
-                    colors = TextFieldDefaults.textFieldColors(backgroundColor = MaterialTheme.colors.surface),
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Search,
@@ -195,7 +196,7 @@ fun FavoriteItem(image: FavoriteImages) {
             Text(
                 text = image.title,
                 modifier = Modifier.padding(horizontal = 16.dp),
-                style = MaterialTheme.typography.h3
+                style = MaterialTheme.typography.titleSmall
             )
         }
     }
@@ -209,7 +210,7 @@ fun Title(title: String) {
             .paddingFromBaseline(top = 40.dp, bottom = 8.dp)
             .padding(screenPadding)
             .fillMaxWidth(),
-        style = MaterialTheme.typography.h2,
+        style = MaterialTheme.typography.titleMedium,
         textAlign = TextAlign.Center
     )
 }
@@ -227,7 +228,7 @@ fun RoundItem(image: Images) {
         Text(
             text = image.title,
             modifier = Modifier.paddingFromBaseline(24.dp),
-            style = MaterialTheme.typography.h3
+            style = MaterialTheme.typography.titleSmall
         )
     }
 }
