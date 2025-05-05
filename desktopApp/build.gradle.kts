@@ -7,9 +7,9 @@ plugins {
 }
 
 kotlin {
-    jvm {}
+    jvm("mango") {}
     sourceSets {
-        val jvmMain by getting  {
+        val mangoMain by getting  {
             dependencies {
                 implementation(compose.desktop.currentOs)
                 implementation(project(":shared"))

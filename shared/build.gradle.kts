@@ -10,9 +10,9 @@ version = "1.0.0"
 
 kotlin {
 
-    wasmJs { browser() }
-    jvm()
     androidTarget()
+    wasmJs { browser() }
+    jvm("wurst")
 
     sourceSets {
         commonMain.dependencies {
